@@ -1,4 +1,13 @@
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+import sitemap from '@astrojs/sitemap';
+
+export default defineConfig({
+  prefetch: false,
+
+  build: {
+      inlineStylesheets: 'never',
+  },
+  site: 'https://exploremathematics.org',
+  integrations: [sitemap()],
+});
