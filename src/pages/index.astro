@@ -1,13 +1,93 @@
 ---
-import Layout from '../layouts/Index.astro';
----
+// First imports
+import Header from '../components/indexHeader.astro';
+import Card from '../components/indexCard.astro';
+import WhyLearn from '../components/indexWhyLearn.astro';
+import Footer from '../components/footer.astro';
 
-<Layout title="Explore Mathematics">
-	<h1>For a single page</h1>
-	<p>Here is some text. Does it have an <code>data-astro</code> tag?</p>
-	<p>Without styles, no. Also the output is automatically minified.</p>
-	<p>Adding (by default, scoped) style generates data tags for elements that need to be scoped.</p>
-	<p>Doing <code>&lt;style is:global&gt;</code> removes the required style data tags.</p>
-	<h1>For a single page with layouts</h1>
-	<a href="calculus/staircase/">A link</a>
-</Layout>
+// Then JS: Import all .astro files in indexCard
+// See https://docs.astro.build/en/guides/imports/#importmetaglob
+const components = Object.values(await import.meta.glob('../components/indexCard/*.astro', { eager: true }));
+
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Get intuition and the big picture for your university math classes. Understand calculus with a staircase, and statistics with geometry.">
+	<meta name="keywords" content="Mathematics, Calculus, Statistics, Linear Algebra">
+	<meta name="author" content="Man Cheung Tsui">
+	<link rel="icon" type="image/svg+xml" href="/images/favicon.svg"/>
+	<title>Explore Mathematics</title>
+</head>
+<body>
+	<Header />
+
+	<!-- Inject styles on cards -->
+	<Card/>
+
+	<!-- Iterate over files in indexCards
+	 See https://docs.astro.build/en/guides/imports/#importmetaglob -->
+	 {components.map((component) => (
+		<div>
+		  <component.default size={24} />
+		</div>
+	  ))}
+
+	<WhyLearn />
+	<Footer />
+</body>
+</html>
+<!-- Inline all index page CSS, avoid nested CSS
+
+Font-sizes {small, base, medium, h2, h1} = {.8, 1.2, 1.4, 3, 3}rem
+
+Minified id's:
+h, i = header, left & right divs
+w, v = article: Why Learn Math
+c, ca = SVG Calculus, arrow
+s, ss, sl, sp = SVG statistics
+
+Minified classes:
+a = article
+
+ -->
+<style is:global>
+	@font-face {
+		font-family: 'Alegreya';
+		src: url("fonts/Alegreya.woff2") format(woff2);
+    }
+    html {
+		font: 1.2rem 'Segoe UI', 'Lucida Grande', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+		scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+    }
+	footer {
+		background: #f1f1f1;
+	}
+	h1 {
+		font-size: clamp(2em, 1em + 5vw, 3em);
+		line-height: .9;
+		margin: 0;
+		color: white;
+	}
+	h2 {
+	font-size: 3em;
+	line-height: 1;
+	margin: .5em 0 .2em 0
+	}
+	a {
+	color: black;
+	text-decoration-color: #0000004d;
+	text-decoration-thickness: .15em;
+	text-decoration-skip-ink: none;
+	}
+    a:hover {
+      text-decoration-color: black;
+      text-decoration-thickness: .2em;
+    }
+	
+</style>

@@ -2,12 +2,14 @@ import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 
+import playformCompress from '@playform/compress';
+
 export default defineConfig({
   prefetch: false,
 
   build: {
-      inlineStylesheets: 'never',
+      // inlineStylesheets: 'never',
   },
   site: 'https://exploremathematics.org',
-  integrations: [sitemap()],
+  integrations: [sitemap(), playformCompress()],
 });

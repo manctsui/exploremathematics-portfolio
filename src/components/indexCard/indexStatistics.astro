@@ -1,0 +1,64 @@
+
+
+<article class="a" id="statistics">
+    <div>
+        <h2>Statistics</h2> is geometrical.
+        <figure>
+          <svg id="s" xmlns="http://www.w3.org/2000/svg" viewBox="0 -27 589 507" stroke-width="4">
+            <g id="sp">
+              <path fill="#ffeca9" stroke-linecap="round"
+                d="M32 336c29 18 85 122 175 110 91-12 336-125 367-183 32-57-86-161-178-160-92 2-326 118-374 170-49 51 70 115 83 139m-74-77c28 18 85 121 175 109 91-12 335-126 367-182" />
+              <g id="ss">
+                <path stroke="#e5d6a0" d="m182 304 192-93m-193 95 192-94" />
+                <circle r="13" cx="181" cy="305" fill="#e5d6a0" />
+                <circle r="13" cx="374" cy="212" fill="#e5d6a0" />
+              </g>
+            </g>
+            <g id="sl">
+              <path opacity=".4" stroke-linecap="round" stroke-dasharray="6 9" stroke="gray" d="m374 14v188" />
+              <circle r="19" cx="374" cy="11" fill="#72DDF7" />
+              <path stroke="black" d="M182 304 367 19" />
+              <path stroke="black" d="M369 14v13m1-14-3 16c-5-3-10-5-12-8" />
+              <circle r="13" cx="181" cy="305" fill="red" />
+              <circle r="13" cx="374" cy="212" fill="red" />
+            </g>
+          </svg>
+        </figure>
+      </div>
+      <div>
+        <ol>
+          <li>
+              <a href="">Statistics = Distance</a><br>
+              <p>A unified theory of mean, median, mode<br>(Under construction)</p>
+          </li>
+          <!-- <li><a href="">Euclid vs Descartes</a></li> -->
+          <!-- <li><a href="">Statistics = Angles</a></li> -->
+        </ol>
+      </div>
+</article>
+
+
+
+<style is:global>
+    #statistics {
+      background-color: #ffefeb;
+    }
+    /* SVG Statistics */
+    #sl, #sp {
+      transition: transform 1s;
+    }
+
+    #ss {
+      filter: blur(2px);
+    }
+
+    #s:hover>#sl {
+      transform: rotate(1deg)translate(0, -20px);
+      transition: transform .5s;
+    }
+
+    #s:hover>#sp {
+      transform: rotate(1deg)translate(0, 10px);
+      transition: transform .5s;
+    }
+</style>

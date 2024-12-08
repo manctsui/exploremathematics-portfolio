@@ -1,0 +1,74 @@
+
+<article class="a" id="calculus">
+    <div>
+        <h2>Calculus</h2> is explained through this staircase.
+        <figure>
+          <svg id="c" viewBox="0 0 54 50" xmlns="http://www.w3.org/2000/svg">
+            <rect id="c-1" height="8" width="8" x="16" y="42"/>
+            <rect id="c-2" height="16" width="8" x="24" y="34"/>
+            <rect id="c-3" height="32" width="8" x="32" y="18"/>
+            <rect id="c-4" height="40" width="8" x="40" y="10"/>
+            <path stroke="black" stroke-width="1" d="M4 50h50"/>
+            <path id="ca" stroke="black" stroke-width=".6" fill="none" d="M2 14s-1 6 7 7l-1.5-2.5 1.8 2.6-2.4 1.4"/>
+          </svg>
+        </figure>
+      </div>
+      <div>
+        <ol>
+          <li><a href="calculus/staircase/">Staircase calculus</a></li>
+          <li>
+            <a href="">Infinitesimal calculus</a><br>
+            <p>(Under construction)</p>
+          </li>
+          <!-- <li><a href="">Small changes</a></li> -->
+          <!-- <li><a href="">Infinitesimals revisited</a></li> -->
+        </ol>
+      </div>
+</article>
+<style is:global>
+    #calculus {
+        background-color: #e9ffec;
+    }
+    /* SVG Calculus */
+    #c {
+      max-width: 100%;
+    }
+    #c rect {
+      fill: #ffeca9;
+      stroke: black;
+      stroke-width: .5;
+    }
+    #c rect:hover {
+      fill: #68f768;
+    }
+
+    #c>#ca {
+      transition: transform 1s;
+    }
+
+    #c:hover>#ca {
+      transform: rotate(-9deg) translateY(5px);
+      transition: transform .5s;
+    }
+
+    @keyframes dip {
+      0%, 27% {
+        transform: translateY(0);
+      }
+      10%, 17% {
+        transform: translateY(3px);
+      }
+    }
+    #c-1 {
+      animation: 7s ease 0s infinite dip;
+    }
+    #c-2 {
+      animation: 7s ease .4s infinite dip;
+    }
+    #c-3 {
+      animation: 7s ease .9s infinite dip;
+    }
+    #c-4 {
+      animation: 7s ease 1.4s infinite dip;
+    }
+</style>

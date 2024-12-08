@@ -1,0 +1,50 @@
+
+<header>
+    <div id="h">
+        <svg role="img" aria-label="Website logo" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 75 44" fill="none">
+        <path
+            d="M22 40c7 0 21-5 28-8s21-10 21-14S55 6 44 1c-3-1-4-2-12 0C15 6 0 8 0 11s10 9 21 15c15 8 22 9 29 10s21-2 21-4-16-8-21-10-10-3-14-4-9-2-14 0S0 26 0 29s15 10 22 11z"
+            stroke="white" stroke-width="1" />
+        </svg>
+        <h1>EXPLORE<br>MATHEMATICS</h1>
+    </div>
+    <div id="i">
+        Intuitive explanations for your university math class on <a href="#calculus">calculus</a> and <a
+        href="#statistics">statistics</a>.
+        <!-- Future: <summary>and more (triangle-down-marker)</summary><details>List of topics...</details> -->
+    </div>
+</header>
+<style is:global>
+    /* Header, header links */
+    header a {
+      color: white;
+      text-decoration-color: #ffffff4d;
+    }
+
+    header a:hover {
+      text-decoration-color: white;
+      text-decoration-thickness: .2em;
+    }
+
+    header {
+      background: linear-gradient(121deg, #6d1fb1, #3b978f, #588399);
+      padding: 11vh 2vw 9vh 10vw;
+    }
+
+    header svg {
+      max-width: clamp(6em, 20vw, 10em);
+    }
+
+    #h {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+    }
+
+    #i {
+      max-width: 35rem;
+      padding-top: 1em;
+      font-size: 1.4em;
+      color: white;
+    }
+</style>
