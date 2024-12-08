@@ -14,14 +14,8 @@ import Footer from '../components/footer.astro';
 	<meta name="keywords" content={keywords}>
     <!-- Links: fonts, icon, KaTeX (CSS, main, auto-render), hover.js -->
     <link rel="preload" href="/public/fonts/Billy.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-    <!-- Load non-critical CSS asynchronously via JS with noscript fallback -->
     <!-- Reference: https://victorlillo.dev/blog/modern-defer-styles -->
-    <!-- Load KaTeX CSS async as well -->
-    <link href="/public/styles/article.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/public/styles/article.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous"></noscript>
-    <!-- Load KaTeX JS -->
+    <!-- Load KaTeX JS defer, but download earlier than KaTeX styling (so JS can parse math while KaTeX CSS is being fetched) -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="
     renderMathInElement(document.body, {
@@ -31,7 +25,16 @@ import Footer from '../components/footer.astro';
         ],
         throwOnError: false, trust: true});">
     </script>
+    <!-- Load non-critical CSS asynchronously via JS with noscript fallback -->
+    <!-- Load KaTeX CSS async as well -->
+    <link href="/public/styles/article.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/public/styles/article.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+    </noscript>
     <script defer src="/public/hover.js"></script>
+    <!-- Favicon listed last -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <title>{title} | Explore Mathematics</title>
 </head>
 <body>
@@ -52,8 +55,7 @@ import Footer from '../components/footer.astro';
     /* Font face: Billy */
     @font-face {
         font-family:'Billy'; 
-        src: url("/public/fonts/Billy.woff2"); 
-        font-display: swap;
+        src: url("/public/fonts/Billy.woff2");
     }
     /* Overall layout */
     html {
@@ -75,30 +77,6 @@ import Footer from '../components/footer.astro';
     ::selection {
         background: #ffdf75;
     }
-    /* Header */
-    header
-    {
-        padding: 0 3%;
-        display: flex;
-    }
-    header h1 {
-        font-size: 1.2em;
-        line-height: .9;
-        transition: .1s;
-        opacity: .7;
-        background: linear-gradient(121deg, #6d1fb1, #3b978f, #588399);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    header a
-    {
-        text-decoration: none;
-    }
-    header h1:hover
-    {
-        opacity: .9;
-    }
     /* Links */
     a {
         color:black;
@@ -107,19 +85,12 @@ import Footer from '../components/footer.astro';
         text-decoration-skip-ink: none;
     }
     a:hover{text-decoration-color:black;text-decoration-thickness:.2em;}
-    /* KaTeX CSS customization */
-    .katex {
-        font-size:1.11em;
-    }
-    .katex-display {
-        margin-top:.8em;
-    }
     /* Figure, images max-width */
     svg, img {
         max-width: 98vw;
     }
     /* SVG */
-    /* Scope svg properties to figure svg since KaTeX extensible arrows & brackets also use SVGs (with fills). */
+    /* Scope SVG properties since KaTeX extensible arrows & brackets also use SVGs (with fills). */
     svg text {
         font-family: Billy, sans-serif;
     }
@@ -129,6 +100,10 @@ import Footer from '../components/footer.astro';
     }
 
 
+    section {
+            content-visibility: auto;
+            contain-intrinsic-size: auto 100vh;
+    }
 
 
 /* Noncritical CSS, move to external file later */

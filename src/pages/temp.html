@@ -16,27 +16,23 @@
         }
         p {
             /* display: inline-block; */
-            float: left;
+            /* float: left; */
             max-width: 30rem;
         }
-        aside {
+        .aside {
             font-size: 0.85rem;
             color: rgb(91, 91, 91);
             float: right;
             /* margin-left: 32rem; */
             width: 15rem;
-            padding-left: 1em;
-            /* position: relative; */
-            /* display: flex; */
+            /* padding-left: 1em; */
+            position: relative;
+            /* display: inline; */
         }
         @media (max-width: 55rem) {
             aside {
                 display: none;
             }
-        }
-        section {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 100vh;
         }
     </style>
 </head>
@@ -45,9 +41,9 @@
         <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, ducimus sint commodi beatae aut pariatur eum! Optio quidem ipsam qui dicta commodi earum voluptatem deleniti numquam ad, aut, eum nesciunt.
         </p>
-        <aside>
+        <span class="aside">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur iusto accusamus quos corrupti ipsum minima cum necessitatibus odit maiores magni. Facere, ratione porro harum quidem placeat quasi vitae tempora quia? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt pariatur impedit itaque veniam, eius a consequatur? Laudantium laborum eos id, voluptates, modi, maxime magnam autem iure accusamus labore qui earum?
-        </aside>
+        </span>
     </article>
 </body>
 </html>

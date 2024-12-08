@@ -1,0 +1,62 @@
+---
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="description" content="Page not found."/>
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg"/>
+<title>404 | Explore Mathematics</title>
+</head>
+<body>
+    <Header />
+    <main>
+        <h1>Oops!<br>We can't find that page.</h1>
+        <p>Try these topics: <a href="/#calculus">calculus</a>, <a href="/#statistics">statistics</a>.</p>
+        <!-- Learn design of 404 pages: https://www.youtube.com/watch?v=CpazY-6Iux0 -->
+    </main>
+	<Footer />
+</body>
+</html>
+
+<style is:global>
+    /* General */
+    html {
+        font: 1.1rem 'Segoe UI','Roboto','Lucida Grande',Arial,'Helvetica Neue',Helvetica,sans-serif;
+        scroll-behavior: smooth;
+    }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    main {
+        margin: 0 auto;
+        max-width: 30em;
+        padding: 0 3%;
+    }
+    main p {
+        line-height: 1.56;
+        font-size: 1.6em;
+    }
+    h1 {
+        /* margin-bottom: 0em; */
+        font-size: 2.6em;
+    }
+    /* Links */
+    a {
+        color:black;
+        text-decoration-color: #b2b2b2;
+        text-decoration-thickness: .15em;
+        text-decoration-skip-ink: none;
+    }
+    a:hover {
+        text-decoration-color: #000;
+        text-decoration-thickness: .2em;
+    }
+</style>

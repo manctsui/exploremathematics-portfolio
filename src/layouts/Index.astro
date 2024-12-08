@@ -6,21 +6,61 @@ import Footer from '../components/footer.astro';
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Intuition and overview for your calculus and university math classes. Calculus is explained through a staircase. Statistics is introduced geometrically.">
+	<meta name="description" content="Get intuition and the big picture for your university math classes. Calculus is explained through a staircase. Statistics is introduced geometrically.">
 	<meta name="keywords" content="Mathematics, Calculus, Statistics, Linear Algebra">
 	<meta name="author" content="Man Cheung Tsui">
 	<link rel="icon" type="image/svg+xml" href="/images/favicon.svg"/>
-<title>Explore Mathematics</title>
+	<title>Explore Mathematics</title>
 </head>
 <body>
 	<slot />
-	<Footer />
 </body>
 </html>
-<!-- Inline all CSS for index page -->
+<!-- Inline all CSS for index page; avoid nested CSS
+
+Font-sizes {small, base, medium, h2, h1} = {.8, 1.2, 1.4, 3, 3}rem
+
+Minified id's:
+h = header, left div
+i = header, right div
+w = article: Why Learn Math
+c, ca = SVG Calculus, arrow
+s, ss, sl, sp = SVG statistics
+
+Minified classes:
+a = article
+
+Minified CSS variables:
+--c = article background color
+ -->
 <style is:global>
+	@font-face {
+		font-family: 'Alegreya';
+		src: url("fonts/Alegreya.woff2") format(woff2);
+    }
+    html {
+		font: 1.2rem 'Segoe UI', 'Lucida Grande', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+		scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+    }
 	h1 {
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		font-size: 2rem;
+		font-size: clamp(2em, 1em + 5vw, 3em);
+		line-height: .9;
+		margin: 0;
+		color: white;
+	}
+	h2 {
+	font-size: 3em;
+	line-height: 1;
+	margin: .5em 0 .2em 0
+	}
+
+	a {
+	color: black;
+	text-decoration-color: #0000004d;
+	text-decoration-thickness: .15em;
+	text-decoration-skip-ink: none;
 	}
 </style>
