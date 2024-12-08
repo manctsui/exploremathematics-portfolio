@@ -30,9 +30,7 @@ const components = Object.values(await import.meta.glob('../components/indexCard
 	<!-- Iterate over files in indexCards
 	 See https://docs.astro.build/en/guides/imports/#importmetaglob -->
 	 {components.map((component) => (
-		<div>
-		  <component.default size={24} />
-		</div>
+		  <component.default />
 	  ))}
 
 	<WhyLearn />

@@ -1,0 +1,36 @@
+---
+
+const { text, url } = Astro.props;
+---
+<nav>
+    READ NEXT<br><a href="">{text}&nbsp;{url}<div id="b">→</div></a>
+</nav>
+<style is:global>
+/* Navigation: next link; make this into a Component that allows multiple links */
+    nav {
+        /* grid-column: 2/3; */
+        border-top: 6px solid black;
+        border-bottom: 6px solid black;
+        margin: 3em 0;
+        padding: 1em 0;
+    }
+    nav a {
+        font-size: 1.6em;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    #b {
+        display: inline-block;
+        /* Reserve right margin for animation. Per Edge's console suggestion, transform animations do not trigger Layout redraws compared to changing padding. */
+        margin-right: .4em;
+    }
+    nav a:hover {
+        color:#56a7f3;
+    }
+    nav a:hover #b {
+        animation: arr .7s infinite alternate;
+    }
+    @keyframes arr {
+        to {transform: translate(.4em);}
+    }
+</style>
