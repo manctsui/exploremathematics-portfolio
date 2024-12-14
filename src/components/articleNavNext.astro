@@ -1,17 +1,16 @@
 ---
 
-const { text, url } = Astro.props;
 ---
-<nav>
-    READ NEXT<br><a href="">{text}&nbsp;{url}<div id="b">→</div></a>
-</nav>
+
+
+
+
+
 <style is:global>
-/* Navigation: next link; make this into a Component that allows multiple links */
     nav {
-        /* grid-column: 2/3; */
+        max-width: 34rem;
         border-top: 6px solid black;
         border-bottom: 6px solid black;
-        margin: 3em 0;
         padding: 1em 0;
     }
     nav a {

@@ -15,10 +15,15 @@ const components = Object.values(await import.meta.glob('../components/indexCard
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Get intuition and the big picture for your university math classes. Understand calculus with a staircase, and statistics with geometry.">
+	<meta name="description" content="Get intuition and the big picture for your university math classes. Understand calculus with staircases, statistics with geometry.">
 	<meta name="keywords" content="Mathematics, Calculus, Statistics, Linear Algebra">
 	<meta name="author" content="Man Cheung Tsui">
-	<link rel="icon" type="image/svg+xml" href="/images/favicon.svg"/>
+	<meta property="og:title" content="Explore Mathematics">
+	<meta property="og:type" content="website">
+	<meta property="og:description" content="Get intuition for your university math classes. Understand calculus with staircases, statistics with geometry.">
+	<meta property="og:image" content="/images/og-splash.png">
+	<meta property="og:url" content="https://exploremathematics.org">
+	<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 	<title>Explore Mathematics</title>
 </head>
 <body>
@@ -65,6 +70,8 @@ a = article
     }
 	footer {
 		background: #f1f1f1;
+		padding: 0 10vw;
+		font-size: .8em;
 	}
 	h1 {
 		font-size: clamp(2em, 1em + 5vw, 3em);

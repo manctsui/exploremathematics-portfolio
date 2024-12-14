@@ -1,8 +1,9 @@
 ---
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, content, nexturl, nextname } = Astro.props;
 
 import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
+import ArticleNavNext from '../components/articleNavNext.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +14,13 @@ import Footer from '../components/footer.astro';
 	<meta name="author" content="Man Cheung Tsui">
 	<meta name="description" content={description}>
 	<meta name="keywords" content={keywords}>
+    
+	<meta property="og:title" content="Explore Mathematics">
+	<meta property="og:type" content="article">
+	<meta property="og:description" content={description}>
+	<meta property="og:image" content={content}>
     <!-- Links: fonts, icon, KaTeX (CSS, main, auto-render), hover.js -->
-    <link rel="preload" href="/public/fonts/Billy.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" fetchpriority="high" href="/public/fonts/Billy.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Reference: https://victorlillo.dev/blog/modern-defer-styles -->
     <!-- Load KaTeX JS defer, but download earlier than KaTeX styling (so JS can parse math while KaTeX CSS is being fetched) -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
@@ -43,52 +49,105 @@ import Footer from '../components/footer.astro';
     <Header />
     <main>
         <article>
-            <h1>{title}</h1>
             <slot name="article"></slot>
+
+
+            <ArticleNavNext></ArticleNavNext>
+            <section>
+                <nav>
+                    READ NEXT<br><a href={nexturl}>{nextname}&nbsp;<div id="b">→</div></a>
+                </nav>
+            </section>
         </article>
-        <slot name="articleNavNext"></slot>
     </main>
 	<Footer />
 </body>
 </html>
 <!-- Critical CSS: font-face, header, layout of h1/p/SVG/figure -->
 <style is:global>
-    /* Font face: Billy */
+    * {
+        background-color: rgba(200, 0, 0, .1);
+    }
+    /* Fonts, sizes */
     @font-face {
         font-family:'Billy'; 
         src: url("/public/fonts/Billy.woff2");
     }
-    /* Overall layout */
     html {
-        font:1.1rem 'Segoe UI', 'Roboto', 'Lucida Grande', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+        font-family: 'Segoe UI', 'Lucida Grande', 'Open Sans', sans-serif;
+        font-size: 1.1rem;
+        font-size: clamp(.95rem, .6rem + 1vw, 1.15rem);
         scroll-behavior: smooth;
     }
     body {
-        margin:0;
+        margin: 0;
     }
-    /* Section lazy loading */
     section {
-        content-visibility: auto;
-        contain-intrinsic-size: auto 100vh;
+        display: grid;
+        grid-template-columns: min(14rem, 100vw - 49rem) 34rem auto;
+        column-gap: 1rem;
     }
-    /* Overall formatting: selection, strong */
-    ::selection {
-        background: #ffdf75;
+    section p {
+        margin-top: 0;
+        grid-column: 2/3;
     }
-    /* Links */
+    section h1 {
+        font-size: 4rem;
+        grid-column: 2/4;
+    }
+    section h2 {
+        font-size: 2rem;
+        grid-column: 2/4;
+    }
+    section nav
+    {
+        grid-column: 2/3;
+    }
+    section figure {
+        grid-column: 2/3;
+    }
+    section > aside {
+        grid-column: 3/4;
+        font-size:.8rem;
+        max-width: 15rem;
+        padding-right: 1rem;
+    }
+    section > aside > figure {
+        margin: 0;
+    }
+    @media (max-width: 52rem) {
+        aside {
+            display: none;
+        }
+    }
+    p, figure {
+        max-width: 34rem;
+    }
+    figure svg {        
+        display: block;
+        /* margin-left: auto;
+        margin-right: auto; */
+    }
+    svg, img {
+        max-width: 100%;
+    }
+    /* Section: lazy loading, grid system */
+    section {
+        /* content-visibility: auto;
+        contain-intrinsic-size: auto 100vh; */
+    }
+    /* Formatting: selection, links (a), strong */
     a {
         color:black;
         text-decoration-color: #0000004d;
         text-decoration-thickness: .15em;
         text-decoration-skip-ink: none;
     }
-    a:hover{
-        text-decoration-color: #000;
-        text-decoration-thickness: .2em;
+    h2 a {
+        text-decoration: none;
     }
-    /* Figure, images max-width */
-    svg, img {
-        max-width: 100%;
+    h2 {
+        font-size: 1.4rem;
     }
     /* SVG: Scoped since KaTeX extensible arrows & brackets also use SVGs (with fills). */
     svg text {
@@ -99,7 +158,28 @@ import Footer from '../components/footer.astro';
         fill:none;
     }
 
+    /* Make noncritical CSS external
+       hover effects,
+       below-the-fold items
+    */
 
-/* Noncritical CSS, move to external file later */
-
+    footer {
+        padding: 4rem 0 0 3%;
+        font-size: .8em;
+    }
+    h2::after {
+        content: ' #';
+        opacity: 0.4;
+        visibility: hidden;
+    }
+    h2:hover::after {
+        visibility: visible;
+    }
+    a:hover{
+        text-decoration-color: #000;
+        text-decoration-thickness: .2em;
+    }
+    ::selection {
+        background: #ffdf75;
+    }
 </style>

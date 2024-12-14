@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            font-size: 1rem;
+            font-size: clamp(1rem, .6rem + 1vw,1.15rem);
+            font-family: sans-serif;
+        }
+        article {
+            /* max-width: 46rem; */
+        }
+        p {
+            display: inline-block;
+            margin-left: clamp(2vw, 50vw - 23rem, 20rem);
+            max-width: 30rem;
+        }
+        aside {
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            /* vertical-align: top; */
+            position: absolute;
+            /* right: 1rem; */
+            left: min(50vw + 23vw, 46rem);
+            /* left: 1rem; */
+            max-width: 15rem;
+            /* color: rgb(91, 91, 91); */
+        }
+        @media (max-width: 55rem) {
+            aside {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <aside>
+            Aside Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur iusto accusamus quos corrupti ipsum minima cum necessitatibus odit maiores magni. Facere, ratione porro
+             <!-- harum quidem placeat quasi vitae tempora quia? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt pariatur impedit itaque veniam, eius a consequatur? Laudantium laborum eos id, voluptates, modi, maxime magnam autem iure accusamus labore qui earum? -->
+        </aside>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores, ducimus sint commodi beatae aut pariatur eum! Optio quidem ipsam qui dicta commodi earum voluptatem deleniti numquam ad, aut, eum nesciunt.
+        </p>
+        
+        <aside>
+            Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, Second aside, 
+        </aside>
+        <p>
+            Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, Second paragraph, 
+        </p>
+    </article>
+</body>
+</html>

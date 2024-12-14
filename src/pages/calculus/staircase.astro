@@ -1,20 +1,24 @@
 ---
 import Article from "../../layouts/Article.astro"
-import ArticleNavNext from '../../components/articleNavNext.astro';
 ---
 <Article
-    title="Staircase Calculus"
-    description="Learn how calculus works intuitively using a picture of a staircase."
-    keywords="Calculus, Fundamental Theorem of Calculus, Finite Calculus, Discrete Calculus, Sequence Calculus, Differentiation, Integration"
+    title = "Staircase Calculus"
+    description = "Learn how calculus works intuitively from a picture of a staircase."
+    keywords = "Calculus, Fundamental Theorem of Calculus, Finite Calculus, Discrete Calculus, Sequence Calculus, Differentiation, Integration"
+    content = "/images/og-splash.png"
+    nexturl="/calculus/infinitesimal-calculus"
+    nextname="Infinitesimal Calculus" 
 >
     <Fragment slot="article">
         <!-- Introductory section -->
         <section>
+            <h1>Staircase<br>Calculus</h1>
             <p>
                 The <strong>Fundamental Theorem of Finite Calculus</strong> says something remarkably simple:
             </p>
-            <figure style="width:28em;">
-                <svg id="staircase" viewBox="0 9 143 88">
+            <figure>
+                <svg id="staircase" role="img" viewBox="0 9 143 88">
+                    <title>On a staircase, the step heights you climb add up to your elevation gain.</title>
                     <style>
                     @keyframes rot{0%{rotate:0deg;}50%{rotate:-1.4deg;}}
                     #arm{transform-origin:left;animation:rot .3s infinite;}
@@ -56,11 +60,75 @@ import ArticleNavNext from '../../components/articleNavNext.astro';
                     </g>
                 </svg>
             </figure>
-            blah
+            <p>
+                Believe it or not, this Fundamental Theorem can help us compute complicated sums. To do this, we first need our staircases to follow some pattern.
+            </p>
+            <aside>
+                This theorem also serves as a prelude to how infinitesimal calculus works in the next article.
+            </aside>
         </section>
-    </Fragment>
-    <Fragment slot="articleNavNext">
-        <ArticleNavNext text="Infinitesimal Calculus" url="infinitesimal-calculus" />
+        <section>
+            <p>
+                The simplest pattern is the <strong>Natural Numbers Staircase</strong>, where the first rectangle has height $1$, the second rectangle has height $2$, and so on.
+            </p>
+            <aside>
+                Everything we discuss here also works if we replace the natural numbers by the integers …, -3, -2, -1, 0, 1, 2, 3, …. The resulting <q>Integer Staircase</q> extends leftward and rightward.
+            </aside>
+            <figure>
+                <!-- Natural Numbers Staircase -->
+                <svg width="15em" viewBox="7 19 87 53">
+                    <title>Natural Numbers Staircase</title>
+                    <!-- <path style="fill: #ecdfd5;" d="M30 100v-10h10v-10h10v-10h10v-10h10v10v-20h10v20v-30h10v30v-40h10v70"/> -->
+                    <text font-size="6" x="72" y="70">... ground</text>
+                    <!-- stairs+ground, arrow upstairs -->
+                    <path d="M20 70v-10h10v10v-20h10v20v-30h10v30v-40h10v40M8 70h60M63 27l4-4-0.5 2-0.1-2-1 0.4" stroke="black" stroke-width=".6"/>
+                    <text font-size="6" x="70" y="23">upstairs</text>
+                    <!-- Group B: Blue text -->
+                    <text x="6" y="78" fill="#1971c2" font-size="9"><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
+                </svg>
+            </figure>
+            <aside>
+                <figure style="max-width:9rem">
+                    <!-- Integers Staircase (aside) -->
+                    <svg role="img" viewBox="20 20 95 80">
+                        <title>Integers Staircase: As you walk right, the staircase goes up with step heights 1, 2, 3, and so on. As you walk left, the staircase goes down to the basement with step heights -1, -2, -3, and so on.</title>
+                        <path d="M30 90h10v-10h10v-10h10v-10h10v10v-20h10v20v-30h10v30v-40h10v40M50 70h60M103 27l4-4-0.5 2-0.1-2-1 0.4M28 92l-4 4 0.5-2 0.1 2 2-0.4-2.6 0.8" stroke="black" stroke-width=".6"/>
+                        <text x="29" y="88" fill="#1971c2" font-size="9">-2<tspan dx="3" dy="-10">-1</tspan><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
+                    </svg>
+                </figure>
+            </aside>
+            <p>
+                The <strong>Square Numbers Staircase</strong> is built from rectangles whose heights are square numbers: the first rectangle has height $1^2=1\times 1 = 1$, the second has height $2^2=2\times 2=4$, the third has height $3^2=3\times 3=9$, and so on.
+            </p>
+            <figure>
+                <!-- Square Numbers Staircase -->
+                <svg width="13em" role="img" viewBox="0 82 73 99">
+                    <title>Square Numbers Staircase</title>
+                    <!-- ground -->
+                    <path stroke="black" stroke-width=".6" d="M4 180h45 M14 180v-10h10v10v-40h10v40v-90h10v90"/>
+                    <text font-size="6" x="51" y="180">... ground</text>
+                    <text x="7" y="178" fill="#1971c2" font-size="9">0<tspan dx="6" dy="-10">1</tspan><tspan dx="6" dy="-30">4</tspan><tspan dx="6" dy="-50">9</tspan></text>
+                </svg>
+            </figure>
+            <p>
+                Finally, the <strong>General Staircase</strong> is built from rectangles of height $f(n)$ where $f$ is a function with natural numbers inputs $n$.
+            </p>
+            <figure>
+                <svg width="13em" role="img" viewBox="-5 0 310 260">
+                    <title>General Staircase</title>
+                    <image height="200" width="300" href="/images/general-staircase.png" />
+                    <path d="M7 253 v-45h45v45v-90h45v90v-135h45v135h45v-160h45v160v-224h45v224h10m0 0h-290" stroke-width="3" stroke="black"></path>
+                    <text x="153" y="190" font-size="40">...</text>
+                </svg>
+            </figure>
+            <p>
+                As special cases of the General Staircase, we have the Natural Numbers Staircase when $f(n)=n$ and the Square Numbers Staircase when $f(n)=n^2$.
+            </p>
+        </section>
+        <!-- Section: Subtraction -->
+        <section>
+            <h2 id="subtraction"><a href="#subtraction">Subtract rectangle heights to get step heights</a></h2>
+        </section>
     </Fragment>
 </Article>
 
