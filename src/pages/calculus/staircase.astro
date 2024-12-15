@@ -70,7 +70,7 @@ import Article from "../../layouts/Article.astro"
         </section>
         <section>
             <aside>
-                Everything we discuss here also works if we replace the natural numbers by the integers …, -3, -2, -1, 0, 1, 2, 3, …. The resulting <q>Integer Staircase</q> extends leftward and rightward.
+                Everything we discuss here also works if we replace the natural numbers by the integers, resulting in the <strong>Integer Staircase</strong> that extends both leftward and rightward:
                 <figure style="max-width:9rem">
                     <!-- Integers Staircase (aside) -->
                     <svg role="img" viewBox="20 20 95 80">
@@ -81,7 +81,7 @@ import Article from "../../layouts/Article.astro"
                 </figure>
             </aside>
             <p>
-                The simplest pattern is the <strong>Natural Numbers Staircase</strong>, where the first rectangle has height $1$, the second rectangle has height $2$, and so on.
+                The simplest pattern is the <strong>Natural Numbers Staircase</strong>, where the first rectangle has height 1, the second rectangle has height 2, and so on.
             </p>
             <figure>
                 <!-- Natural Numbers Staircase -->
@@ -91,13 +91,13 @@ import Article from "../../layouts/Article.astro"
                     <text font-size="6" x="72" y="70">... ground</text>
                     <!-- stairs+ground, arrow upstairs -->
                     <path d="M20 70v-10h10v10v-20h10v20v-30h10v30v-40h10v40M8 70h60M63 27l4-4-0.5 2-0.1-2-1 0.4" stroke="black" stroke-width=".6"/>
-                    <text font-size="6" x="70" y="23">upstairs</text>
                     <!-- Group B: Blue text -->
                     <text x="6" y="78" fill="#1971c2" font-size="9"><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
+                    <text font-size="6" x="70" y="23">upstairs</text>
                 </svg>
             </figure>
             <p>
-                The <strong>Square Numbers Staircase</strong> is built from rectangles whose heights are square numbers: the first rectangle has height $1^2=1\times 1 = 1$, the second has height $2^2=2\times 2=4$, the third has height $3^2=3\times 3=9$, and so on.
+                The <strong>Square Numbers Staircase</strong> is built from rectangles whose heights are square numbers: the first rectangle has height 1<sup>2</sup> = 1 × 1 = 1, the second has height 2<sup>2</sup> = 2 × 2 = 4, the third has height 3<sup>2</sup> = 3 × 3 = 9, and so on.
             </p>
             <figure>
                 <!-- Square Numbers Staircase -->
@@ -131,7 +131,7 @@ import Article from "../../layouts/Article.astro"
                 Clearly the step heights in the Natural Numbers Staircase are all $1$. The Square Numbers Staircase is more interesting — as you walk right, its step heights are increasing odd numbers.
             </p>
             <figure>
-                <img loading="lazy" width="600" height="327.8" src="/images/step-height.png" alt="The rectangle heights of the Square Numbers Staircase are 0, 1, 4, 9, 16, …. So the step heights are the successive differences 1-0=1, 4-1=3, 9-4=5, 16-9=7,….">
+                <img loading="lazy" width="600" height="327.8" src="/images/step-height.png" alt="Step heights of the Natural Numbers Staircase, the Square Numbers Staircase, and the General Staircase are depicted by vertical arrows that start from the previous rectangle to the next rectangle. In the Square Numbers Staircase, the rectangle heights are 0, 1, 4, 9, 16, …, so the step heights are the successive differences 1-0=1, 4-1=3, 9-4=5, 16-9=7,….">
             </figure>
             <p is:raw>
                 In general, the <span class="m">$n$th</span> step height is the difference in height between the <span class="m">$n$th</span> rectangle and the <span class="m">$(n+1)$st</span> rectangle. So in the General Staircase, the <span class="m">$n$th</span> step height is
@@ -507,6 +507,7 @@ import Article from "../../layouts/Article.astro"
             </p>
             <figure>
                 <svg id="flatland" width="13em" viewBox="0 0 62 16">
+                    <title>Flat land</title>
                     <rect x="1" y="1" class="sq"/><rect x="11" y="1" class="sq"/><rect x="21" y="1" class="sq"/><rect x="31" y="1" class="sq"/><rect x="41" y="1" class="sq"/><rect x="51" y="1" class="sq"/><rect x="1" y="11" class="sq"/><rect x="11" y="11" class="sq"/><rect x="21" y="11" class="sq"/><rect x="31" y="11" class="sq"/><rect x="41" y="11" class="sq"/><rect x="51" y="11" class="sq"/><path d="M1 1h60" stroke="black" stroke-width=".4"/><path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/></svg>
             </figure>
             <p>
@@ -514,6 +515,7 @@ import Article from "../../layouts/Article.astro"
             </p>
             <figure>
                 <svg id="mound" width="13em" viewBox="0 -10 62 26">
+                    <title>Flat land with one square mound on top</title>
                     <rect x="1" y="1" class="sq"/><rect x="11" y="1" class="sq"/><rect x="21" y="1" class="sq"/><rect x="21" y="-9" class="sq"/><rect x="31" y="1" class="sq"/><rect x="41" y="1" class="sq"/><rect x="51" y="1" class="sq"/><rect x="1" y="11" class="sq"/><rect x="11" y="11" class="sq"/><rect x="21" y="11" class="sq"/><rect x="31" y="11" class="sq"/><rect x="41" y="11" class="sq"/><rect x="51" y="11" class="sq"/>
                     <path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1M21 1h10" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/>
                     <path d="M1 1h20v-10h10v10h30" stroke="black" stroke-width=".4"/>
@@ -524,6 +526,7 @@ import Article from "../../layouts/Article.astro"
             </p>
             <figure>
                 <svg id="ditch" width="13em" viewBox="0 0 62 16">
+                    <title>Flat land with one square hole in it</title>
                     <rect x="1" y="1" class="sq"/><rect x="11" y="1" class="sq"/><rect x="21" y="1" class="sq"/><rect x="31" y="1" class="sq"/><rect x="51" y="1" class="sq"/><rect x="1" y="11" class="sq"/><rect x="11" y="11" class="sq"/><rect x="21" y="11" class="sq"/><rect x="31" y="11" class="sq"/><rect x="41" y="11" class="sq"/><rect x="51" y="11" class="sq"/>
                     <path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/><path d="M1 1h40v10h10v-10h10" stroke="black" stroke-width=".4"/>
                 </svg>
@@ -533,6 +536,7 @@ import Article from "../../layouts/Article.astro"
             </p>
             <figure>
                 <svg width="30em" viewBox="-2 0 170 94">
+                    <title>Upper picture: Signed area of land with one rectangular mound of height 2 and a rectangular mound of height 1 has area 3 more than the original flat land. Lower picture: Signed area of land with two square holes of height -1 has area -2 compared to the original flat land.</title>
                     <defs>
                         <g id="brace">
                             <text font-size="8" x="-2" y="22" font-family="Billy">SIGNED<tspan x="3" dy="8">AREA</tspan></text>
@@ -601,6 +605,7 @@ import Article from "../../layouts/Article.astro"
             </p>
             <figure>
                 <svg width="28em" viewBox="-2 3 164 42">
+                    <title>Signed area of land with a square mound and a square hole has the same area as the original flat land.</title>
                     <use xlink:href = "#brace"/>
                     <text font-size="8" x="91" y="25">= 0 + 1 + 0 + -1 + 0 = 0</text>
                     <path d="M31 32h50M41 37v-15h10m20 0v15M51 22v15M61 22v15" stroke="#d2bab0" stroke-width=".4" stroke-dasharray=".2 1"/>
@@ -620,10 +625,11 @@ import Article from "../../layouts/Article.astro"
                 </svg>
             </figure>
             <p>
-                Visualizing sums as signed areas is clutch because simple shapes have simple areas.
+                Visualizing sums as signed areas is clutch because simple shapes have simple areas, so in the same way that we find the area of a triangle, we can find the sum
             </p>
             <figure>
                 <svg id="ga" width="30em" viewBox="0 0 118 77">
+                    <title>The sum 1+2+3+…+99+100 is equal to the area underneath the Natural Numbers Staircase from the first step to the hundredth step. This staircase is a jagged right triangle of width 100 and height 100. Its area is half the area of the rectangle obtained by piecing an upside down copy of this triangle to itself. The rectangle has width 100 and height 101. Therefore the original sum 1+2+3+…+99+100 equals (1/2) × 100 × 101.</title>
                     <style>#ga{circle{r:.2px;}}</style>
                     <!-- Curly braces: vert (top, bot), horiz (top, bot) -->
                     <path style="stroke:#000;stroke-width:.3" d="
@@ -652,9 +658,6 @@ import Article from "../../layouts/Article.astro"
                     <g font-size="6"><text x="0" y="15">1 + 2 + 3 + ··· + 99 + 100 = </text><text x="66" y="15">AREA</text><text x="57" y="47">=</text><text x="62.5" y="44">1</text><text x="62" y="50">2</text><text x="66" y="46.5">AREA</text><text x="57" y="73">=</text><text x="62.5" y="70">1</text><text x="62" y="76">2</text><text x="66" y="73"> × 100 × 101</text></g>
                     </svg>
             </figure>
-            <p>
-                This is the same way the area of a triangle is found.
-            </p>
         </section>
         <!-- Section: Basic rules -->
         <section>
