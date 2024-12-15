@@ -65,9 +65,9 @@ import ArticleNavNext from '../components/articleNavNext.astro';
 </html>
 
 <style is:global>
-    * {
-        /* background-color: rgba(200, 0, 0, .1); */
-    }
+    /* * {
+        background-color: rgba(200, 0, 0, .1);
+    } */
     @font-face {
         font-family:'Billy'; 
         src: url("/fonts/Billy.woff2");
@@ -81,13 +81,13 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     }
     section {
         content-visibility: auto;
-        contain-intrinsic-size: auto 100vh;
+        contain-intrinsic-size: auto 10vh;
         position: relative;
     }
-    section > p, section > figure, section > h1, section > h2, section > nav, table, section > ul, math, .ex {
+    section > p, section > figure, section > h1, section > h2, section > nav, table, section > ul, .leftmargin, .ex {
         margin-left: min(max(1rem, 100vw - 51rem), 18rem);
     }
-    math, .ex {
+    .math, .ex {
         max-width: 34rem;
     }
     .ex {
@@ -132,7 +132,6 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     figure {
         display: flex;
         justify-content: center;
-        /* align-items: center; */
     }
     svg, img {
         max-width: 100%;
@@ -183,11 +182,10 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     }
     h2::after {
         content: ' #';
-        opacity: 0.4;
-        visibility: hidden;
+        opacity: 0.2;
     }
     h2:hover::after {
-        visibility: visible;
+        opacity: 0.7;
     }
     a:hover{
         text-decoration-color: #000;
@@ -199,10 +197,10 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     
     /* KaTeX CSS customization */
     .katex {
-        font-size:1.11em;
+        font-size: 1.1rem;
     }
     .katex-display {
-        margin-top:.5em;
+        margin-top:0.4rem;
     }
     /* Custom math classes */
     .math {text-align: center;}

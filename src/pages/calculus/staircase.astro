@@ -131,7 +131,7 @@ import Article from "../../layouts/Article.astro"
                 Clearly the step heights in the Natural Numbers Staircase are all $1$. The Square Numbers Staircase is more interesting — as you walk right, its step heights are increasing odd numbers.
             </p>
             <figure>
-                <img loading="lazy" width="600" height="327.8" src="/images/step-height.png" alt="">
+                <img loading="lazy" width="600" height="327.8" src="/images/step-height.png" alt="The rectangle heights of the Square Numbers Staircase are 0, 1, 4, 9, 16, …. So the step heights are the successive differences 1-0=1, 4-1=3, 9-4=5, 16-9=7,….">
             </figure>
             <p is:raw>
                 In general, the <span class="m">$n$th</span> step height is the difference in height between the <span class="m">$n$th</span> rectangle and the <span class="m">$(n+1)$st</span> rectangle. So in the General Staircase, the <span class="m">$n$th</span> step height is
@@ -192,6 +192,9 @@ import Article from "../../layouts/Article.astro"
             </p>
             <figure>
                 <svg width="19em" role="img" viewBox="48 10 98 61">
+                    <title>
+                        In the Natural Numbers Staircase, walking from the rectangle of height 1 to the rectangle of height 4 results in an elevation gain of 4-1=3. Or we can write this as 1+1+1 if we add up the intermediate step heights.
+                    </title>
                     <!-- Squares -->
                     <rect x="60" y="60" class="sq"/>
                     <rect x="70" y="60" class="sq"/>
@@ -227,6 +230,9 @@ import Article from "../../layouts/Article.astro"
             <figure>
                 <!-- Square Numbers Staircase, Step heights -->
                 <svg width="14em" role="img" viewBox="45 71 73 110">
+                    <title>
+                        In the Square Numbers Staircase, walking from the ground (height 0) to the rectangle of height 9 results in an elevation gain of 9-0=9. Or we can write this as 1+3+5 if we add up the intermediate step heights.
+                    </title>
                     <!-- Squares -->
                     <rect x="80" y="90" class="sq"/>
                     <rect x="80" y="100" class="sq"/>
@@ -262,12 +268,12 @@ import Article from "../../layouts/Article.astro"
                 Now consider the General Staircase whose <span class="m">$n$th</span> rectangle height is $f(n)$. If we walk from its $a$th rectangle up to its $b$th rectangle, the resulting picture looks like this:
             </p>
             <figure>
-                <img loading="lazy" width="400" height="236.85" src="/images/FTFC.png" alt="The step heights at n=a, n=a+1, ..., n=b-1, add up to f(b)-f(a)">
+                <img loading="lazy" width="400" height="236.85" src="/images/FTFC.png" alt="The step heights of the General Staircase at n=a, n=a+1, …, n=b-1, add up to f(b)-f(a)">
             </figure>
             <p>
                 Thus the Fundamental Theorem is written algebraically as
             </p>
-            <div class="math" id="m-ftfc">
+            <div class="math leftmargin" id="m-ftfc">
                 <div class="m" is:raw>$$\htmlId{h-left-sum-1}{f^-(a)+f^-(a+1)+\dots+f^-(b-1)}$$</div>
                 <div class="m" is:raw>$$=\htmlId{h-right-difference-1}{f(b)-f(a)}$$</div>
             </div>
@@ -292,7 +298,7 @@ import Article from "../../layouts/Article.astro"
             <p is:raw>
                 The evaluation bar notation $f(n){\large\vert}^b_a=f(b)-f(a)$ simply performs subtraction. The summation notation $\Sigma$ is way more awesome since it shortens a sum like
             </p>
-            <div class="math">
+            <div class="math leftmargin">
                 <div class="m">$$1^2+2^2+3^2+4^2+$$</div>
                 <div class="m">$$\cdots+98^2+99^2+100^2$$</div>
             </div>
@@ -487,7 +493,7 @@ import Article from "../../layouts/Article.astro"
                 In terms of geometry, subtraction just means computing the step height as the difference in height between two adjacent rectangles.
             </p>
             <figure>
-                <img loading="lazy" width="600" height="153.05" src="/images/subtract.png" alt="">
+                <img loading="lazy" width="600" height="153.05" src="/images/subtract.png" alt="The difference in height of two adjacent rectangles of heights f(n) and f(+1) is f(n+1)-f(n) and denoted by f^-(n).">
             </figure>
         </section>
         <!-- Section: Addition as signed areas -->
@@ -660,13 +666,13 @@ import Article from "../../layouts/Article.astro"
                 When we add two functions $f$ and $g$, the graph of $f+g$ is just the graphs of $f$ and $g$ stacked together. When we draw this out, the signed areas of these graphs clearly add together. The same is true for their height differences.
             </p>
             <figure>
-                <img loading="lazy" width="598" height="174.5" src="/images/add.png" alt="">
+                <img loading="lazy" width="598" height="174.5" src="/images/add.png" alt="Stacking of two graphs of functions">
             </figure>
             <p>
                 Likewise, multiplying a function $f(n)$ by a constant $c$ stretches its graph vertically by $c$. Again, the signed area and height differences also scale by the same factor $c$.
             </p>
             <figure>
-                <img loading="lazy" width="600" height="215.6" src="/images/multiply.png" alt="">
+                <img loading="lazy" width="600" height="215.6" src="/images/multiply.png" alt="The graph of a function stretched vertically by a factor of 2.">
             </figure>
             <p is:raw>
                 In symbols, the subtraction rules are then
@@ -678,8 +684,8 @@ import Article from "../../layouts/Article.astro"
                 $$
                 and the summation rules are
             </p>
-                <div class="math">
-                    <div class="m" is:raw>$$\sum_{n=a}^{b}\left[f(n)+g(n)\right]$$</div>
+                <div class="math leftmargin">
+                    <div class="m" is:raw>$$\sum_{n=a}^{b}\left[f(n)+g(n)\right]\,$$</div>
                     <div class="m" is:raw>$$=\sum_{n=a}^{b}f(n)+\sum_{n=a}^{b}g(n)$$</div>
                 </div>
             <p is:raw>
