@@ -3,6 +3,7 @@ import Article from "../../layouts/Article.astro"
 ---
 <Article
     title = "Staircase Calculus"
+    ogtitle = "Understand Calculus with Staircases"
     description = "Learn how calculus works intuitively from a picture of a staircase."
     keywords = "Calculus, Fundamental Theorem of Calculus, Finite Calculus, Discrete Calculus, Sequence Calculus, Differentiation, Integration"
     content = "/images/og-splash.png"
@@ -60,20 +61,28 @@ import Article from "../../layouts/Article.astro"
                     </g>
                 </svg>
             </figure>
-            <p>
-                Believe it or not, this Fundamental Theorem can help us compute complicated sums. To do this, we first need our staircases to follow some pattern.
-            </p>
             <aside>
                 This theorem also serves as a prelude to how infinitesimal calculus works in the next article.
             </aside>
+            <p>
+                Believe it or not, this Fundamental Theorem can help us compute complicated sums. To do this, we first need our staircases to follow some pattern.
+            </p>
         </section>
         <section>
+            <aside>
+                Everything we discuss here also works if we replace the natural numbers by the integers …, -3, -2, -1, 0, 1, 2, 3, …. The resulting <q>Integer Staircase</q> extends leftward and rightward.
+                <figure style="max-width:9rem">
+                    <!-- Integers Staircase (aside) -->
+                    <svg role="img" viewBox="20 20 95 80">
+                        <title>Integers Staircase: As you walk right, the staircase goes up with step heights 1, 2, 3, and so on. As you walk left, the staircase goes down to the basement with step heights -1, -2, -3, and so on.</title>
+                        <path d="M30 90h10v-10h10v-10h10v-10h10v10v-20h10v20v-30h10v30v-40h10v40M50 70h60M103 27l4-4-0.5 2-0.1-2-1 0.4M28 92l-4 4 0.5-2 0.1 2 2-0.4-2.6 0.8" stroke="black" stroke-width=".6"/>
+                        <text x="29" y="88" fill="#1971c2" font-size="9">-2<tspan dx="3" dy="-10">-1</tspan><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
+                    </svg>
+                </figure>
+            </aside>
             <p>
                 The simplest pattern is the <strong>Natural Numbers Staircase</strong>, where the first rectangle has height $1$, the second rectangle has height $2$, and so on.
             </p>
-            <aside>
-                Everything we discuss here also works if we replace the natural numbers by the integers …, -3, -2, -1, 0, 1, 2, 3, …. The resulting <q>Integer Staircase</q> extends leftward and rightward.
-            </aside>
             <figure>
                 <!-- Natural Numbers Staircase -->
                 <svg width="15em" viewBox="7 19 87 53">
@@ -87,16 +96,6 @@ import Article from "../../layouts/Article.astro"
                     <text x="6" y="78" fill="#1971c2" font-size="9"><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
                 </svg>
             </figure>
-            <aside>
-                <figure style="max-width:9rem">
-                    <!-- Integers Staircase (aside) -->
-                    <svg role="img" viewBox="20 20 95 80">
-                        <title>Integers Staircase: As you walk right, the staircase goes up with step heights 1, 2, 3, and so on. As you walk left, the staircase goes down to the basement with step heights -1, -2, -3, and so on.</title>
-                        <path d="M30 90h10v-10h10v-10h10v-10h10v10v-20h10v20v-30h10v30v-40h10v40M50 70h60M103 27l4-4-0.5 2-0.1-2-1 0.4M28 92l-4 4 0.5-2 0.1 2 2-0.4-2.6 0.8" stroke="black" stroke-width=".6"/>
-                        <text x="29" y="88" fill="#1971c2" font-size="9">-2<tspan dx="3" dy="-10">-1</tspan><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
-                    </svg>
-                </figure>
-            </aside>
             <p>
                 The <strong>Square Numbers Staircase</strong> is built from rectangles whose heights are square numbers: the first rectangle has height $1^2=1\times 1 = 1$, the second has height $2^2=2\times 2=4$, the third has height $3^2=3\times 3=9$, and so on.
             </p>
@@ -122,17 +121,618 @@ import Article from "../../layouts/Article.astro"
                 </svg>
             </figure>
             <p>
-                As special cases of the General Staircase, we have the Natural Numbers Staircase when $f(n)=n$ and the Square Numbers Staircase when $f(n)=n^2$.
+                As special cases of the General Staircase, we get back the Natural Numbers Staircase when $f(n)=n$ and the Square Numbers Staircase when $f(n)=n^2$.
             </p>
         </section>
         <!-- Section: Subtraction -->
         <section>
             <h2 id="subtraction"><a href="#subtraction">Subtract rectangle heights to get step heights</a></h2>
+            <p>
+                Clearly the step heights in the Natural Numbers Staircase are all $1$. The Square Numbers Staircase is more interesting — as you walk right, its step heights are increasing odd numbers.
+            </p>
+            <figure>
+                <img loading="lazy" width="600" height="327.8" src="/images/step-height.png" alt="">
+            </figure>
+            <p is:raw>
+                In general, the <span class="m">$n$th</span> step height is the difference in height between the <span class="m">$n$th</span> rectangle and the <span class="m">$(n+1)$st</span> rectangle. So in the General Staircase, the <span class="m">$n$th</span> step height is
+                $$f^{\htmlId{h-minus-1}{-}}(n)=f(n+1)-f(n).$$
+                We introduce this handy <span id="h-minus" onmouseover="hOver(this)" onmouseout="hOut(this)">superscript minus sign</span> notation to remind us to <em>subtract</em>. Therefore the <span class="m">$n$th</span> step height of the Natural Numbers Staircase and the Square Numbers Staircase can also be calculated algebraically as follows.
+            </p>
+            <table>
+                <colgroup>
+                    <col span="1" style="width:7em;">
+                </colgroup>
+                <tr>
+                    <th></th>
+                    <th>
+                        $\boldsymbol n$th step height
+                    </th>
+                </tr>
+                <tr>
+                    <th>General Staircase</th>
+                    <td>
+                        <div class="math">
+                            <div class="m">$$f^-(n)$$</div>
+                            <div class="m">$$=f(n+1)-f(n)$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Natural Numbers Staircase<br>$\small f(n)=n$</th>
+                    <td>
+                        <div class="math">
+                            <div class="m">$$(n)^-$$</div>
+                            <div class="m">$$=(n+1)-n$$</div>
+                            <div class="m">$$=1$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Square Numbers Staircase<br>$\small f(n)=n^2$</th>
+                    <td>
+                        <div class="math">
+                            <div class="m">$$(n^2)^-$$</div>
+                            <div class="m">$$=(n+1)^2-n^2$$</div>
+                            <div class="m">$$=2n+1$$</div>
+                            <div class="m" is:raw>$$=\text{odd number}$$</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+        <!-- Section: addition -->
+        <section>
+            <h2 id="addition"><a href="#addition">Add step heights to get elevation gain</a></h2>
+            <p>
+                Recall that the Fundamental Theorem of Finite Calculus says that the step heights you have taken add up to your elevation gain. 
+            </p>
+            <p>
+                With the Natural Numbers Staircase, this means that the difference of two numbers is a sum of that many $1$'s.
+            </p>
+            <figure>
+                <svg width="19em" role="img" viewBox="48 10 98 61">
+                    <!-- Squares -->
+                    <rect x="60" y="60" class="sq"/>
+                    <rect x="70" y="60" class="sq"/>
+                    <rect x="80" y="60" class="sq"/>
+                    <rect x="90" y="60" class="sq"/>
+                    <rect x="70" y="50" class="sq"/>
+                    <rect x="80" y="50" class="sq"/>
+                    <rect x="90" y="50" class="sq"/>
+                    <rect x="80" y="40" class="sq"/>
+                    <rect x="90" y="40" class="sq"/>
+                    <rect x="90" y="30" class="sq"/>
+                    <!-- Arrows: red, blue -->
+                    <path  stroke="#e03131" stroke-width=".4" d="M68 60v-9.7l0.8 2m-.8-2l-.6 2M78 50v-9.7l0.8 2m-.8-2l-.6 2M88 40v-9.7l0.8 2m-.8-2l-.6 2"/>
+                    <path d="M108 60h3h-1.5v-30h1.5h-3h1.5l.7 2.8m-.7-2.8l-.6 2.8" stroke="#1971c2" stroke-width=".5"/>
+                    <!-- 1+1+1 = 4-1 -->
+                    <text x="60" y="15" font-size="5">
+                        <tspan fill="#e03131">step heights</tspan>&nbsp;add up to&nbsp;<tspan fill="#1971c2">elevation gain</tspan>
+                    </text>
+                    <text x="62" y="25" font-size="10">
+                        <tspan fill="#e03131">1 + 1 + 1</tspan><tspan>&nbsp;=&nbsp;</tspan><tspan fill="#1971c2">4 - 1</tspan>
+                    </text>
+                    <!-- ground -->
+                    <path stroke="black" stroke-width=".5" d="M50 70h55"/>
+                    <!-- Dotted lines -->
+                    <path d="M70 60h30v-10h-20v-10h20" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".5 1"/>
+                    <!-- staircase -->
+                    <path stroke="black" stroke-width=".5" d="M60 70v-10h10v10v-20h10v20v-30h10v30v-40h10v40"/>
+                </svg>
+            </figure>
+            <p>
+                With the Square Numbers Staircase, this means that the difference of two square numbers is a sum of consecutive odd numbers.
+            </p>
+            <figure>
+                <!-- Square Numbers Staircase, Step heights -->
+                <svg width="14em" role="img" viewBox="45 71 73 110">
+                    <!-- Squares -->
+                    <rect x="80" y="90" class="sq"/>
+                    <rect x="80" y="100" class="sq"/>
+                    <rect x="80" y="110" class="sq"/>
+                    <rect x="80" y="120" class="sq"/>
+                    <rect x="80" y="130" class="sq"/>
+                    <rect x="70" y="140" class="sq"/>
+                    <rect x="80" y="140" class="sq"/>
+                    <rect x="70" y="150" class="sq"/>
+                    <rect x="80" y="150" class="sq"/>
+                    <rect x="70" y="160" class="sq"/>
+                    <rect x="80" y="160" class="sq"/>
+                    <rect x="60" y="170" class="sq"/>
+                    <rect x="70" y="170" class="sq"/>
+                    <rect x="80" y="170" class="sq"/>
+                    <!-- ground -->
+                    <path stroke="#000" stroke-width="0.5" d="M50 180h44"/>
+                    <!-- Staircase -->
+                    <path stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".5 1" d="M70 170h20m0-10h-20m0-10h20m0-10h-10m0-10h10m0-10h-10m0-10h10m0-10h-10"/>
+                    <path stroke="#000" stroke-width=".5" d="M60 180v-10h10v10v-40h10v40v-90h10v90"/>
+                    <!-- Red arrow, blue arrow,  -->
+                    <path d="M60 180v-10l1 3m-1-3l-1 3M70 170v-30l1 3m-1-3l-1 3M80 140v-50l1 3m-1-3l-1 3" stroke="#e03131" stroke-width=".8"/>
+                    <path d="M99 180h2h-4h2v-90h2h-4h2l1 3m-1-3l-1 3" stroke="#1971c2" stroke-width="1"/>
+                    <text x="49" y="75" font-size="5">
+                        <tspan fill="#e03131">step heights</tspan>&nbsp;add up to&nbsp;<tspan fill="#1971c2">elevation gain</tspan>
+                    </text>
+                    <text x="46" y="85" font-size="10">
+                        <tspan fill="#e03131">1 + 3 + 5</tspan><tspan>&nbsp;=&nbsp;</tspan><tspan fill="#1971c2">9 - 0</tspan>
+                    </text>
+                </svg>
+            </figure>
+            <p>
+                Now consider the General Staircase whose <span class="m">$n$th</span> rectangle height is $f(n)$. If we walk from its $a$th rectangle up to its $b$th rectangle, the resulting picture looks like this:
+            </p>
+            <figure>
+                <img loading="lazy" width="400" height="236.85" src="/images/FTFC.png" alt="The step heights at n=a, n=a+1, ..., n=b-1, add up to f(b)-f(a)">
+            </figure>
+            <p>
+                Thus the Fundamental Theorem is written algebraically as
+            </p>
+            <div class="math" id="m-ftfc">
+                <div class="m" is:raw>$$\htmlId{h-left-sum-1}{f^-(a)+f^-(a+1)+\dots+f^-(b-1)}$$</div>
+                <div class="m" is:raw>$$=\htmlId{h-right-difference-1}{f(b)-f(a)}$$</div>
+            </div>
+            <div class="math" id="m-ftfc-small">
+                <div class="m" is:raw>$$\htmlId{h-left-sum-1}{f^-(a)+f^-(a+1)+}$$</div>
+                <div class="m" is:raw>$$\htmlId{h-left-sum-3}{\dots+f^-(b-1)}$$</div>
+                <div class="m" is:raw>$$=\htmlId{h-right-difference-1}{f(b)-f(a)}$$</div>
+            </div>
+            <p is:raw>
+                or more elegantly as
+                $$\htmlId{h-left-sum-2}{\sum_{n=a}^{b-1}f^-(n)} = \htmlId{h-right-difference-2}{f(n){\Large\vert}^b_a}$$
+                upon adopting new notations $\Sigma$ and $\vert$. Here we read
+            </p>
+            <ul>
+                <li>
+                    <span class="h2" id="h-left-sum" onmouseover="hOver(this)" onmouseout="hOut(this)" is:raw>$\displaystyle\sum_{n=a}^{b-1}f^-(n)$</span> as <q>$f^-(n)$ summed from $a$ to $b-1$</q>, and
+                </li>
+                <li>
+                    <span class="h2" id="h-right-difference" onmouseover="hOver(this)" onmouseout="hOut(this)" is:raw>$f(n){\Large\vert}^b_a$</span> as <q>$f(n)$ evaluated from $a$ to $b$</q>.
+                </li>
+            </ul>
+            <p is:raw>
+                The evaluation bar notation $f(n){\large\vert}^b_a=f(b)-f(a)$ simply performs subtraction. The summation notation $\Sigma$ is way more awesome since it shortens a sum like
+            </p>
+            <div class="math">
+                <div class="m">$$1^2+2^2+3^2+4^2+$$</div>
+                <div class="m">$$\cdots+98^2+99^2+100^2$$</div>
+            </div>
+            <p is:raw>
+                to just $\displaystyle\sum_{n=1}^{100}n^2$.
+            </p>
+            </section>
+            <section>
+            <p>
+                Here is what the Fundamental Theorem looks like for the Natural Numbers Staircase, the Square Numbers Staircase, and what we will call the <q>Exponential Staircase</q>.
+            </p>
+            <table id="table-ftfc">
+                <colgroup>
+                    <col span="1" style="width:7em;">
+                </colgroup>
+                <tr>
+                    <th></th>
+                    <th>Step heights</th>
+                    <th>Fundamental Theorem</th>
+                </tr>
+                <tr>
+                    <th>General Staircase</th>
+                    <td>
+                        <div class="math">
+                            <div class="m">$$f^-(n)$$</div>
+                            <div class="m">$$=f(n+1)-f(n)$$</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}f^-(n)$$</div>
+                            <div class="m" is:raw>$$=f(n){\Large\vert}^b_a$$</div>
+                            <div class="m">$$=f(b)-f(a)$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Natural Numbers Staircase<br>$\small f(n)=n$</th>
+                    <td>$$(n)^-=1$$</td>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}1$$</div>
+                            <div class="m" is:raw>$$=n{\Large\vert}^b_a$$</div>
+                            <div class="m">$$=b-a$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Square Numbers Staircase<br>$\small f(n)=n^2$</th>
+                    <td>
+                        <div class="math">
+                            <div class="m">$$(n^2)^-$$</div>
+                            <div class="m">$$=2n+1$$</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}(2n+1)$$</div>
+                            <div class="m" is:raw>$$=n^2{\Large\vert}^b_a$$</div>
+                            <div class="m">$$=b^2-a^2$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Exponential Staircase<br>$\small f(n)=r^n$</th>
+                    <td>
+                        <div class="math">
+                            <div class="m">$$(r^n)^-$$</div>
+                            <div class="m" is:raw>$$=r^{n+1}-r^n$$</div>
+                            <div class="m">$$=(r-1)r^n$$</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}(r-1)r^n$$</div>
+                            <div class="m" is:raw>$$=r^n{\Large\vert}^b_a$$</div>
+                            <div class="m">$$=r^b-r^a$$</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table id="table-ftfc-small">
+                <colgroup>
+                    <col span="1" style="width:6em;">
+                </colgroup>
+                <tr>
+                    <th></th>
+                    <th>Step heights /<br>Fundamental Theorem</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">General Staircase</th>
+                    <td>
+                        <div class="math">
+                            <div class="m">$$f^-(n)$$</div>
+                            <div class="m">$$=f(n+1)-f(n)$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}f^-(n)=f(n){\Large\vert}^b_a$$</div>
+                            <div class="m">$$=f(b)-f(a)$$</div>
+                        </div>
+                    </td>
+                </tr>
+                </tr>
+                <tr>
+                    <th rowspan="2">Natural Numbers Staircase<br>$\small f(n)=n$</th>
+                    <td>
+                        $$(n)^-=1$$
+                    </td>
+                </tr>
+                <tr>
+                    <td is:raw>
+                        $$\sum_{n=a}^{b-1}1=n{\Large\vert}^b_a=b-a$$
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="2">Square Numbers Staircase<br>$\small f(n)=n^2$</th>
+                    <td>
+                        $$(n^2)^-=2n+1$$
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}(2n+1)$$</div>
+                            <div class="m" is:raw>$$=n^2{\Large\vert}^b_a$$</div>
+                            <div class="m">$$=b^2-a^2$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="2">Exponential Staircase<br>$\small f(n)=r^n$</th>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$(r^n)^-=r^{n+1}-r^n$$</div>
+                            <div class="m">$$=(r-1)r^n$$</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}(r-1)r^n=r^n{\Large\vert}^b_a$$</div>
+                            <div class="m">$$=r^b-r^a$$</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                In these examples, notice that subtraction formulas <em>reverse</em> into summation formulas. Ignoring subscripts and superscripts:
+            </p>
+            <ul>
+                <li>$(n)^-=1$ reverses into $\sum 1=n$, and</li>
+                <li>$(n^2)^-=2n+1$ reverses into $\sum (2n+1)=n^2$.</li>
+            </ul>
+            <p>
+                In other words, the Fundamental Theorem gives us a strategy to compute a sum $\sum g(n)$:
+            </p>
+            <ul>
+                <li>First recognize $g(n)$ as the differences $f^-(n)$ of some $f(n)$.</li>
+                <li is:raw>Now apply the Fundamental Theorem to conclude$$\sum_{n=a}^{b-1}g(n)=f(b)-f(a).$$</li>
+            </ul>
+            <div class="ex">
+                <b>Example.</b> To compute the sum
+                <div class="math">
+                    <div class="m" is:raw>$$\sum_{n=0}^{49}(2n+1)=$$</div>
+                    <div class="m" is:raw>$$1+3+5+7+9+\dots+99,$$</div>
+                </div>
+                we recognize $2n+1$ as the differences of $n^2$ since 
+                $$(n^2)^-=2n+1.$$
+                So
+                <div class="math">
+                    <div class="m" is:raw>$$\sum_{n=0}^{50-1}(2n+1)=n^2{\Large\vert}^{50}_0$$</div>
+                    <div class="m" is:raw>$$=50^2-0^2=2500.$$</div>
+                </div>
+            </div>
+        </section>
+        <!-- Section: Finite calculus -->
+        <section>
+            <h2 id="finite-calculus"><a href="#finite-calculus">Finite calculus</a></h2>
+            <p>
+                The staircase math we've been talking about is more commonly called <em>finite calculus</em>, and it essentially involves reinterpreting addition and subtraction geometrically. 
+            </p>
+        </section>
+        <!-- Section: Subtraction -->
+        <section>
+            <h2 id="height-difference"><a href="#height-difference">Subtraction as change in height</a></h2>
+            <p>
+                In terms of geometry, subtraction just means computing the step height as the difference in height between two adjacent rectangles.
+            </p>
+            <figure>
+                <img loading="lazy" width="600" height="153.05" src="/images/subtract.png" alt="">
+            </figure>
+        </section>
+        <!-- Section: Addition as signed areas -->
+        <section>
+            <h2 id="signed-area"><a href="#signed-area">Addition as signed area</a></h2>
+            <p>
+                With addition though, the preferred geometric interpretation in finite calculus is in terms of <em>signed areas</em>.
+            </p>
+            <p>
+                Start with flat land.
+            </p>
+            <figure>
+                <svg id="flatland" width="13em" viewBox="0 0 62 16">
+                    <rect x="1" y="1" class="sq"/><rect x="11" y="1" class="sq"/><rect x="21" y="1" class="sq"/><rect x="31" y="1" class="sq"/><rect x="41" y="1" class="sq"/><rect x="51" y="1" class="sq"/><rect x="1" y="11" class="sq"/><rect x="11" y="11" class="sq"/><rect x="21" y="11" class="sq"/><rect x="31" y="11" class="sq"/><rect x="41" y="11" class="sq"/><rect x="51" y="11" class="sq"/><path d="M1 1h60" stroke="black" stroke-width=".4"/><path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/></svg>
+            </figure>
+            <p>
+                If we build a square mound, we gain one square of dirt.
+            </p>
+            <figure>
+                <svg id="mound" width="13em" viewBox="0 -10 62 26">
+                    <rect x="1" y="1" class="sq"/><rect x="11" y="1" class="sq"/><rect x="21" y="1" class="sq"/><rect x="21" y="-9" class="sq"/><rect x="31" y="1" class="sq"/><rect x="41" y="1" class="sq"/><rect x="51" y="1" class="sq"/><rect x="1" y="11" class="sq"/><rect x="11" y="11" class="sq"/><rect x="21" y="11" class="sq"/><rect x="31" y="11" class="sq"/><rect x="41" y="11" class="sq"/><rect x="51" y="11" class="sq"/>
+                    <path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1M21 1h10" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/>
+                    <path d="M1 1h20v-10h10v10h30" stroke="black" stroke-width=".4"/>
+                </svg>
+            </figure>
+            <p>
+                If we dig a square hole, we lose one square of dirt.
+            </p>
+            <figure>
+                <svg id="ditch" width="13em" viewBox="0 0 62 16">
+                    <rect x="1" y="1" class="sq"/><rect x="11" y="1" class="sq"/><rect x="21" y="1" class="sq"/><rect x="31" y="1" class="sq"/><rect x="51" y="1" class="sq"/><rect x="1" y="11" class="sq"/><rect x="11" y="11" class="sq"/><rect x="21" y="11" class="sq"/><rect x="31" y="11" class="sq"/><rect x="41" y="11" class="sq"/><rect x="51" y="11" class="sq"/>
+                    <path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/><path d="M1 1h40v10h10v-10h10" stroke="black" stroke-width=".4"/>
+                </svg>
+            </figure>
+            <p>
+                Overall, the <strong>signed area</strong> of a shape is how much dirt we gain or lose compared to the barren, flat land we started with — it is the sum of the positive heights (for mounds) and negative heights (for holes).
+            </p>
+            <figure>
+                <svg width="30em" viewBox="-2 0 170 94">
+                    <defs>
+                        <g id="brace">
+                            <text font-size="8" x="-2" y="22" font-family="Billy">SIGNED<tspan x="3" dy="8">AREA</tspan></text>
+                            <path d="M27 4c-8 19 0 40 0 40M84 4c9 20 1 40 1 40" stroke="black" stroke-width=".8" stroke-linecap="round" fill="none"/>
+                        </g>
+                        <clipPath id="clip1">
+                            <rect x="0" y="0" width="100" height="41"/>
+                        </clipPath>
+                        <clipPath id="clip2">
+                            <rect x="0" y="0" width="100" height="37"/>
+                        </clipPath>
+                    </defs>
+                    <use xlink:href = "#brace"/>
+                    <use x="0" y="48" xlink:href="#brace"/>
+                    <g font-size="5">
+                        <text x="25" y="25">height 0</text>
+                        <text x="41" y="5">height 2</text>
+                        <text x="53" y="15">height 1</text>
+                        <text x="67" y="19">height 0</text>
+                        <text x="43" y="72">height -1</text>
+                    </g>
+                    <text font-size="8" x="91" y="27">= 0 + 2 + 1 + 0 + 0 = 3</text>
+                    <text font-size="8" x="91" y="76">= 0 + -1 + -1 + 0 + 0 = -2</text>
+                    <!-- Arrows: top, bottom -->
+                    <g stroke="black" stroke-width=".4">
+                        <path d="m69 21-2 4v-2v2l1.5-1"/>
+                        <path d="m73 21 2 4-2-1 2 1 .1-2"/>
+                        <path d="m48.6 74.2-2 3.6M46.9 76.8v1M47.5 77.1l-.7 .7"/>
+                        <path d="m53 74 1 2m1 1.6m-1.1-1.6 1.1 1.6M54 77l.8 .6m-.8-.6 .8 .6M55 77l.2 .9m-.2-1 .2 1"/>
+                    </g>
+                    <!-- Rectangles -->
+                    <g clip-path="url(#clip1)">
+                        <rect x="41" y="7" class="sq"/>
+                        <rect x="41" y="17" class="sq"/>
+                        <rect x="51" y="17" class="sq"/>
+                        <rect x="31" y="27" class="sq"/>
+                        <rect x="41" y="27" class="sq"/>
+                        <rect x="51" y="27" class="sq"/>
+                        <rect x="61" y="27" class="sq"/>
+                        <rect x="71" y="27" class="sq"/>
+                        <rect x="31" y="37" class="sq"/>
+                        <rect x="41" y="37" class="sq"/>
+                        <rect x="51" y="37" class="sq"/>
+                        <rect x="61" y="37" class="sq"/>
+                        <rect x="71" y="37" class="sq"/>
+                    </g>
+                    <rect x="31" y="69" class="sq"/>
+                    <rect x="61" y="69" class="sq"/>
+                    <rect x="71" y="69" class="sq"/>
+                    <rect x="31" y="79" class="sq"/>
+                    <rect x="41" y="79" class="sq"/>
+                    <rect x="51" y="79" class="sq"/>
+                    <rect x="61" y="79" class="sq"/>
+                    <rect x="71" y="79" class="sq"/>
+                    <!-- Dashed lines -->
+                    <path d="M41 27h20 M31 37h50M41 41V27M51 41V17M61 41V27M71 41V27M41 17h10M31 79h50M41 89V79M51 89V79M61 89V79M71 89V69" stroke="#d2bab0" stroke-width=".4" stroke-dasharray=".2 1"/>
+                    <!-- Black lines -->
+                    <path d="M31 26.7h10v-20h10v10h10v10h20M31 68.7h10v10.2h20v-10.2h20" stroke="black" stroke-width=".5"/>
+                </svg>
+            </figure>
+            <p>
+                We use the term <em>signed area</em> because mounds are assigned positive areas, while holes are assigned negative areas.
+            </p>
+            <p>
+                The next example has a signed area of zero due to cancellations between positive and negative areas. So this landscape has the same amount of dirt as the original flat land.
+            </p>
+            <figure>
+                <svg width="28em" viewBox="-2 3 164 42">
+                    <use xlink:href = "#brace"/>
+                    <text font-size="8" x="91" y="25">= 0 + 1 + 0 + -1 + 0 = 0</text>
+                    <path d="M31 32h50M41 37v-15h10m20 0v15M51 22v15M61 22v15" stroke="#d2bab0" stroke-width=".4" stroke-dasharray=".2 1"/>
+                    <path d="M31 22h10v-10h10v10h10v10h10v-10h10" stroke="black" stroke-width=".5"/>
+                    <g clip-path="url(#clip2)">
+                        <rect x="41" y="12" class="sq"/>
+                        <rect x="31" y="22" class="sq"/>
+                        <rect x="41" y="22" class="sq"/>
+                        <rect x="51" y="22" class="sq"/>
+                        <rect x="71" y="22" class="sq"/>
+                        <rect x="31" y="32" class="sq"/>
+                        <rect x="41" y="32" class="sq"/>
+                        <rect x="51" y="32" class="sq"/>
+                        <rect x="61" y="32" class="sq"/>
+                        <rect x="71" y="32" class="sq"/>
+                    </g>
+                </svg>
+            </figure>
+            <p>
+                Visualizing sums as signed areas is clutch because simple shapes have simple areas.
+            </p>
+            <figure>
+                <svg id="ga" width="30em" viewBox="0 0 118 77">
+                    <style>#ga{circle{r:.2px;}}</style>
+                    <!-- Curly braces: vert (top, bot), horiz (top, bot) -->
+                    <path style="stroke:#000;stroke-width:.3" d="
+                    M108 13s-1-1-1-2 0-9-2-9m3 11s-1 0-1 2c0 0 0 7-2 7
+                    M109 45s-1-1-1-2 0-9-2-9m3 11s-1 0-1 2c0 0 0 7-2 8.5
+                    M94 26s0-1 1-1 8 0 8-2m-9 3s0-1-1-1-9 0-9-2
+                    M95.5 60s0-1 1-1 8 0 8-2m-9 3s0-1-1-1-9 0-9-2"/>
+                    <!-- pink grid, its border -->
+                    <path d="M89 34V50M87 34V52m0-18V52m4-4H85m6 0H85m8-2H85m8 0H85m4 4H85m4 0H85m2 2H85m2 0H85m6-18V48m0-14V48m4-14V44M93 34V46m10-10H85m16 2H85m14 2H85m12 2H85m18-8v2m-2-2v4m-4-4v8m2-8v6m-4 4H85" stroke="#e86565" stroke-width=".1"/>
+                    <path d="M93 46v2h-2v2h-2v2h-2v2h-2V34h20v2h-2v2h-2v2h-2v2h-2v2h-2" stroke="#e86565" stroke-width=".4"/>
+                    <!-- top black grid, its border -->
+                    <path d="M103 12H93h10H93m-4 4v6m2-8v8m-4-4v4m-2-2v2m18-8H91h12H91m12 2H89m14 0H89m14 2H87h16H87m16 2H85m18 0H85M95 10v12M93 12v10M103 4h-2m2 2h-4m4 4h-8m8-2h-6m4-4v18M99 6v16M97 8v14" stroke="#ced4da" stroke-width=".2"/>
+                    <path d="M95 10V8v2V8h2V6h2V4h2V2h2v20H83v-2h2v-2h2v-2h2v-2h2v-2h2" stroke="black" stroke-width=".2"/>
+                    <!-- Grid ellipses -->
+                    <circle cx="93.5" cy="11.5"/><circle cx="94" cy="11"/><circle cx="94.5" cy="10.5"/><circle cx="96" cy="45"/><circle cx="96.5" cy="44.5"/><circle cx="97" cy="44"/>
+                    <!-- bottom black grid, its border -->
+                    <path d="M105 38h-2m2 2h-4m4 4h-8m8-2h-6m4-4v18m-2-16v16m4-10H95m-4 4v6m2-8v8m-4-4v4m-2-2v2m18-8H93m12 2H91m14 2H89m16 2H87M97 44v12M95 46v10m4-14v14" stroke="#ced4da"  stroke-width=".2"/>
+                    <!-- bottom black grid border -->
+                    <path d="M97 44v-2h2v-2h2v-2h2v-2h2v20H85.1v-2h2v-2h2v-2h2v-2h2v-2h2" stroke="black" stroke-width=".2"/>
+                    <!-- parentheses -->
+                    <path d="M115 55s4-10 0-21M82 56s-4-10 0-21m32-13s4-10 0-21M82 23S78 13 82 2" stroke="black" stroke-width=".5"/>
+                    <!-- text -->
+                    <g font-size="4"><text x="92" y="30">100</text><text x="109" y="14">100</text><text x="93" y="64">100</text><text x="110" y="46">101</text></g>
+                    <path d="M61 45h4M61 71h4" stroke="black" stroke-width=".4"/>
+                    <text font-size="4" fill="#e86565" x="86" y="39">Flipped<tspan x="88" dy="3">copy</tspan></text>
+                    <g font-size="6"><text x="0" y="15">1 + 2 + 3 + ··· + 99 + 100 = </text><text x="66" y="15">AREA</text><text x="57" y="47">=</text><text x="62.5" y="44">1</text><text x="62" y="50">2</text><text x="66" y="46.5">AREA</text><text x="57" y="73">=</text><text x="62.5" y="70">1</text><text x="62" y="76">2</text><text x="66" y="73"> × 100 × 101</text></g>
+                    </svg>
+            </figure>
+            <p>
+                This is the same way the area of a triangle is found.
+            </p>
+        </section>
+        <!-- Section: Basic rules -->
+        <section>
+            <h2 id="basic-rules"><a href="#basic-rules">Basic rules</a></h2>
+            <p>
+                Some basic rules about summation formulas fall out naturally from our new geometric interpretation.
+            </p>
+            <p>
+                When we add two functions $f$ and $g$, the graph of $f+g$ is just the graphs of $f$ and $g$ stacked together. When we draw this out, the signed areas of these graphs clearly add together. The same is true for their height differences.
+            </p>
+            <figure>
+                <img loading="lazy" width="598" height="174.5" src="/images/add.png" alt="">
+            </figure>
+            <p>
+                Likewise, multiplying a function $f(n)$ by a constant $c$ stretches its graph vertically by $c$. Again, the signed area and height differences also scale by the same factor $c$.
+            </p>
+            <figure>
+                <img loading="lazy" width="600" height="215.6" src="/images/multiply.png" alt="">
+            </figure>
+            <p is:raw>
+                In symbols, the subtraction rules are then
+                $$
+                \begin{align*}
+                (f+g)^-(n)&=f^-(n)+g^-(n)\\[2ex]
+                (c\cdot f)^-(n)&=c\cdot f^-(n)
+                \end{align*}
+                $$
+                and the summation rules are
+            </p>
+                <div class="math">
+                    <div class="m" is:raw>$$\sum_{n=a}^{b}\left[f(n)+g(n)\right]$$</div>
+                    <div class="m" is:raw>$$=\sum_{n=a}^{b}f(n)+\sum_{n=a}^{b}g(n)$$</div>
+                </div>
+            <p is:raw>
+                $$\sum_{n=a}^{b}c\cdot f(n) = c\, \sum_{n=a}^{b}f(n)$$
+            </p>
+            <div class="ex">
+                <b>Example.</b> Applying the last rule to the Exponential Staircase gives
+                <div class="math">
+                    <div class="m" is:raw>$$\sum_{n=a}^{b-1}(r-1)\,r^n=r^n{\Large\vert}^b_a\quad$$</div>
+                    <div class="m" is:raw>$$\xRightarrow{\displaystyle\times \frac{1}{r-1}}\quad$$</div>
+                    <div class="m" is:raw>$$\sum_{n=a}^{b-1}r^n=\left.\frac{r^n}{r-1}\right\rvert_a^b$$</div>
+                </div>
+                This is the <em>geometric series formula</em> from high school algebra, often written with $a=0$.
+            </div>
+            <div class="ex">
+                <b>Example.</b> Applying summation to $n=\tfrac12(2n+1)-\tfrac12\cdot 1$ gives
+                <div id="m-exponential" is:raw>
+                    $$\begin{align*}
+                    \sum^{b-1}_{n=a} n &= \tfrac{1}{2}\sum^{b-1}_{n=a}(2n+1)-\tfrac{1}{2}\sum^{b-1}_{n=a}1\\[4ex]
+                    &= \tfrac{1}{2}(b^2-a^2)-\tfrac{1}{2}(b-a)
+                    \end{align*}$$
+                </div>
+                <div id="m-exponential-small" is:raw>
+                    $$\begin{align*}
+                    &\phantom{=} \sum^{b-1}_{n=a} n\\[4ex]
+                    &= \tfrac{1}{2}\sum^{b-1}_{n=a}(2n+1)-\tfrac{1}{2}\sum^{b-1}_{n=a}1\\[4ex]
+                    &= \tfrac{1}{2}(b^2-a^2)-\tfrac{1}{2}(b-a)
+                    \end{align*}$$
+                </div>
+                This last equality follows from our Square Numbers Staircase and Natural Numbers Staircase examples. Letting $a=1$ and $b=101$, we once again find 
+                <div class="math">
+                    <div class="m" is:raw>$$1+2+3+\dots+99+100$$</div>
+                    <div class="m" is:raw>$$=\tfrac{1}{2}(101^2-1)-\tfrac{1}{2}(101-1)$$</div>
+                    <div class="m" is:raw>$$=5050$$</div>
+                    
+                </div>
+            </div>
+            <p>
+                We can find fancier sums by developing finite calculus further, but we'll stop here. Let's now see how infinitesimal calculus works.
+            </p>
         </section>
     </Fragment>
 </Article>
 
 <style is:global>
+    /* SVG: Scoped since KaTeX extensible arrows & brackets also use SVGs (with fills). */
+    svg text {
+        font-family: Billy, sans-serif;
+    }
+    figure svg path {
+        stroke-linecap:round; 
+        fill:none;
+    }
     /* SVG: Squares with hover */
     .sq {
         fill-opacity: .2;
@@ -141,4 +741,79 @@ import Article from "../../layouts/Article.astro"
         height: 10px;
     }
     .sq:hover{fill-opacity:.5;}
+    
+    @media (max-width: 18rem) {
+        #m-ftfc {
+            display: none;
+        }
+    }
+    @media (min-width: 18rem) {
+        #m-ftfc-small {
+            display: none;
+        }
+    }
+    #h-left-sum, #h-right-difference { 
+        border-radius:.5em;
+        padding:.4em .3em .4em .3em;
+        margin:.2em 0;
+        border:1px dashed #ffb855;
+        display:inline-flex;
+    }
+    .h-left-sum-1-on, .h-left-sum-3-on {
+        background:#ffee72; border-radius:.4em; padding:.2em;
+    }
+    .h-left-sum-2-on {
+        background:#ffee72; border-radius:.4em; padding:1.4em .3em;
+    }
+    .h-left-sum-1 {
+        /* padding-top:.3em;padding-bottom:.3em; */
+    }
+    .h-left-sum-2 {
+        /* padding-top:1.4em;padding-bottom:1.4em;border-radius:.5em; */
+    }
+    .h-right-difference-1-on, .h-right-difference-2-on {
+        background: #ffee72;
+        padding: .6em .4em;
+        border-radius: .5em;
+    }
+    .h-left-sum-on, .h-right-difference-on {
+        background-color: #ffee72;
+    }
+    @media (max-width: 30rem) {
+        #table-ftfc {
+            display: none;
+        }
+    }
+    @media (min-width: 30rem) {
+        #table-ftfc-small {
+            display: none;
+        }
+    }
+    @media (max-width: 18rem) {
+        #m-exponential {
+            display: none;
+        }
+    }
+    @media (min-width: 18rem) {
+        #m-exponential-small {
+            display: none;
+        }
+    }
+    
+    /* Math */
+    .h-minus-1-on {
+        padding:0 .2em;
+        background:#ffee72;
+        border-radius:50%;
+    }
+    .h-minus-on {
+        background:#ffee72;
+    }
+    #h-minus {
+        border-radius:.5em;
+        padding:0 .2em;
+        border:1px dashed #ffb855;
+        display:inline-flex;
+    }
+
 </style>
