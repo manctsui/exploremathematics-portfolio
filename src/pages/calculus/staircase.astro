@@ -7,15 +7,16 @@ import Article from "../../layouts/Article.astro"
     description = "Learn how calculus works intuitively from a picture of a staircase."
     keywords = "Calculus, Fundamental Theorem of Calculus, Finite Calculus, Discrete Calculus, Sequence Calculus, Differentiation, Integration"
     content = "/images/og-splash.png"
-    nexturl="/calculus/infinitesimal-calculus"
+    nexturl="/"
     nextname="Infinitesimal Calculus" 
 >
+    <!-- nexturl="/calculus/infinitesimal-calculus" -->
     <Fragment slot="article">
         <!-- Introductory section -->
         <section>
             <h1>Staircase<br>Calculus</h1>
             <p>
-                <span class="lead">Much of the intuition&nbsp;</span>behind infinitesimal calculus—the calculus you see in school—actually comes from understanding how staircases work. Compared to infinitesimal calculus, the mathematics of staircases—more commonly known as <em>finite calculus</em><span class="aside">Other names for finite calculus include discrete calculus, sequence calculus, and calculus of finite differences.</span>—is much, much simpler. In fact, here is what the <strong>Fundamental Theorem of Finite Calculus</strong> tells us.
+                <span class="lead">Much of the intuition&nbsp;</span>behind infinitesimal calculus—the calculus you see in school—actually comes from understanding how staircases work. Compared to infinitesimal calculus, the mathematics of staircases—more commonly known as <em>finite calculus</em><span class="aside" role="note">Other names for finite calculus include discrete calculus, sequence calculus, and calculus of finite differences.</span>—is much, much simpler. In fact, here is what the <strong>Fundamental Theorem of Finite Calculus</strong> tells us.
             </p>
             <figure>
                 <svg id="staircase" role="img" viewBox="0 0 143 98">
@@ -69,7 +70,7 @@ import Article from "../../layouts/Article.astro"
         <section>
             <p>
                 The simplest pattern is the <strong>Natural Numbers Staircase</strong>, where the first rectangle has height 1, the second rectangle has height 2, and so on.
-                <span class="aside">
+                <span class="aside" role="note">
                     Everything we discuss here also works if we replace the natural numbers by the integers, resulting in the <strong>Integer Staircase</strong> that extends both leftward and rightward:
                         <!-- Integers Staircase (aside) -->
                         <svg role="img" viewBox="20 20 95 80">
@@ -92,7 +93,7 @@ import Article from "../../layouts/Article.astro"
                 </svg>
             </figure>
             <p>
-                The <strong>Square Numbers Staircase</strong> is built from rectangles whose heights are square numbers: the first rectangle has height 1<sup>2</sup> = 1 × 1 = 1, the second has height 2<sup>2</sup> = 2 × 2 = 4, the third has height 3<sup>2</sup> = 3 × 3 = 9, and so on.
+                The <strong>Square Numbers Staircase</strong> is built from rectangles whose heights are square numbers: the first rectangle has height $1^2=1\times1=1$, the second has height $2^2=2\times2=4$, the third has height $3^2=3\times3=9$, and so on.
             </p>
             <figure>
                 <!-- Square Numbers Staircase -->
@@ -526,7 +527,7 @@ import Article from "../../layouts/Article.astro"
                 Overall, the <strong>signed area</strong> of a shape is how much dirt we gain or lose compared to the barren, flat land we started with—it is the sum of the positive heights (for mounds) and the negative heights (for holes).
             </p>
             <figure>
-                <svg width="30em" viewBox="-2 0 170 94">
+                <svg width="30em" viewBox="-2 0 172 94">
                     <title>Upper picture: Land with a rectangular mound of height 2 and a rectangular mound of height 1. Its signed area is 3 units. Lower picture: Land with two square holes each of height -1. Its signed area is -2..</title>
                     <defs>
                         <g id="brace">
@@ -595,7 +596,7 @@ import Article from "../../layouts/Article.astro"
                 The next picture shows a signed area of zero due to cancellations between positive and negative areas. So this landscape has the same amount of dirt as the original flat land.
             </p>
             <figure>
-                <svg width="28em" viewBox="-2 3 164 42">
+                <svg width="28em" viewBox="-2 3 166 42">
                     <title>Signed area of land with a square mound and a square hole has the same area as the original flat land.</title>
                     <use xlink:href = "#brace"/>
                     <text font-size="8" x="91" y="25">= 0 + 1 + 0 + -1 + 0 = 0</text>
