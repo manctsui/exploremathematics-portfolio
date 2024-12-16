@@ -65,53 +65,37 @@ import ArticleNavNext from '../components/articleNavNext.astro';
 </html>
 
 <style is:global>
-    /* * {
-        background-color: rgba(200, 0, 0, .1);
-    } */
-    @font-face {
-        font-family:'Billy'; 
-        src: url("/fonts/Billy.woff2");
-    }
-    html {
-        font: 1rem 'Segoe UI', 'Lucida Grande', 'Open Sans', sans-serif;
-        scroll-behavior: smooth;
-    }
-    body {
-        margin: 0;
-    }
+    /* * {background-color: rgba(200, 0, 0, .1);} */
+    @font-face {font-family:'Billy'; src: url("/fonts/Billy.woff2");}
+    html {font: 1rem 'Segoe UI', 'Lucida Grande', 'Open Sans', sans-serif;scroll-behavior: smooth;}
+    body {margin: 0;}
+    /* Section default left margin; use a new class not wrapped in section to opt out. */
     section {
         content-visibility: auto;
         contain-intrinsic-size: auto 10vh;
-        position: relative;
+        margin-left: min(max(.8rem, 100vw - 50rem), 18rem);
     }
-    section > p, section > figure, section > h1, section > h2, section > nav, table, section > ul, .leftmargin, .ex {
-        margin-left: min(max(1rem, 100vw - 51rem), 18rem);
-    }
-    .math, .ex {
+    .math, .ex, section > figure, section > p, section > ul {
         max-width: 34rem;
     }
     .ex {
         border:1px solid black;
         padding: 1em;
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin: 1em 0;
     }
     section > p, section > ul {
-        max-width: 34rem;
-        margin-right: 1rem;
+        margin-right: .8rem;
         line-height: 1.6;
     }
-    section > aside {
-        position: absolute;
+    .aside {
         font-size:.8rem;
-        margin-top: 1rem;
-        left: min(max(35rem, 100vw - 17rem), 54rem);
         width: 14rem;
-        margin-right: 1rem;
-        /* color:#656565; */
+        float: right;
+        display: inline;
+        margin-right: -15.4rem;
     }
     @media (max-width: 50rem) {
-        section > aside {
+        .aside {
             display: none;
         }
     }
@@ -125,20 +109,16 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     section > h2 {
         font-size: 2rem;
     }
-    section > figure {
-        max-width: 34rem;
-    }
     figure {
         display: flex;
         justify-content: center;
+        margin: 0;
     }
     svg, img {
-        max-width: 100%;
         height: auto;
     }
     /* Tables */
     table{
-        /* table-layout: fixed; */
         border-collapse: collapse;
         margin-bottom: 2em;
     }
@@ -146,33 +126,23 @@ import ArticleNavNext from '../components/articleNavNext.astro';
         border: 1px solid black;
         padding: .7em .4em;
     }
-    
     @media (max-width: 32rem) {
-        table {
-            margin-left: 0;
-        }
         th, td {
             padding: .4em;
         }
     }
     /* Formatting: selection, links (a), strong */
-    
-    strong {
-        font-weight: bold;
-    }
     a {
         color:#000;
         text-decoration-color: #0000004d;
-        text-decoration-thickness: .15em;
+        text-decoration-thickness: .2em;
         text-decoration-skip-ink: none;
     }
     h2 > a {
         text-decoration: none;
     }
 
-    /* Make noncritical CSS external
-       hover effects,
-       below-the-fold items
+    /* External noncritical CSS, like hover effects, below-fold items
     */
 
     footer {
@@ -209,6 +179,5 @@ import ArticleNavNext from '../components/articleNavNext.astro';
         font-weight: bold;
         font-size: 130%;
         font-family: 'Courier New', monospace;
-        padding-right: .2em;
     }
 </style>
