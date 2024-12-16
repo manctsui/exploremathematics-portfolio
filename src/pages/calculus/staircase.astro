@@ -14,16 +14,22 @@ import Article from "../../layouts/Article.astro"
         <!-- Introductory section -->
         <section>
             <h1>Staircase<br>Calculus</h1>
+            <aside style="padding-top: 6em;">
+                Finite calculus also goes by a few more names like discrete calculus, sequence calculus, calculus of finite differences.
+            </aside>
             <p>
-                The <strong>Fundamental Theorem of Finite Calculus</strong> says something remarkably simple:
+                <span class="lead">Much of the intuition</span> 
+                <!-- Much of the intuition  -->
+                behind infinitesimal calculus—the calculus you see in school—actually comes from understanding how staircases work. Compared to infinitesimal calculus, the mathematics of staircases—more commonly known as <em>finite calculus</em>—is much, much simpler. In fact, here is what the <strong>Fundamental Theorem of Finite Calculus</strong> tells us.
             </p>
             <figure>
-                <svg id="staircase" role="img" viewBox="0 9 143 88">
-                    <title>On a staircase, the step heights you climb add up to your elevation gain.</title>
+                <svg id="staircase" role="img" viewBox="0 0 143 98">
+                    <title>Fundamental Theorem of Finite Calculus: On a staircase, the step heights you climb add up to your elevation gain.</title>
                     <style>
                     @keyframes rot{0%{rotate:0deg;}50%{rotate:-1.4deg;}}
                     #arm{transform-origin:left;animation:rot .3s infinite;}
                     </style>
+                    <text font-size="4" x="6" y="7" fill="grey">FUNDAMENTAL THEOREM OF FINITE CALCULUS</text>
                     <text font-size="6" x="6" y="15">On a staircase,</text>
                     <text font-size="6" x="6" y="22"><tspan fill="#e03131">the step heights you climb</tspan>&nbsp;add up to&nbsp;<tspan fill="#1971c2">your elevation gain.</tspan>
                     </text>
@@ -61,17 +67,14 @@ import Article from "../../layouts/Article.astro"
                     </g>
                 </svg>
             </figure>
-            <aside>
-                This theorem also serves as a prelude to how infinitesimal calculus works in the next article.
-            </aside>
             <p>
-                Believe it or not, this Fundamental Theorem can help us compute complicated sums. To do this, we first need our staircases to follow some pattern.
+                Surprisingly, this Fundamental Theorem can help us compute complicated sums. To do this, we first need our staircases to follow some pattern.
             </p>
         </section>
         <section>
             <aside>
                 Everything we discuss here also works if we replace the natural numbers by the integers, resulting in the <strong>Integer Staircase</strong> that extends both leftward and rightward:
-                <figure style="max-width:9rem">
+                <figure>
                     <!-- Integers Staircase (aside) -->
                     <svg role="img" viewBox="20 20 95 80">
                         <title>Integers Staircase: As you walk right, the staircase goes up with step heights 1, 2, 3, and so on. As you walk left, the staircase goes down to the basement with step heights -1, -2, -3, and so on.</title>
@@ -87,7 +90,6 @@ import Article from "../../layouts/Article.astro"
                 <!-- Natural Numbers Staircase -->
                 <svg width="15em" viewBox="7 19 87 53">
                     <title>Natural Numbers Staircase</title>
-                    <!-- <path style="fill: #ecdfd5;" d="M30 100v-10h10v-10h10v-10h10v-10h10v10v-20h10v20v-30h10v30v-40h10v70"/> -->
                     <text font-size="6" x="72" y="70">... ground</text>
                     <!-- stairs+ground, arrow upstairs -->
                     <path d="M20 70v-10h10v10v-20h10v20v-30h10v30v-40h10v40M8 70h60M63 27l4-4-0.5 2-0.1-2-1 0.4" stroke="black" stroke-width=".6"/>
@@ -128,7 +130,7 @@ import Article from "../../layouts/Article.astro"
         <section>
             <h2 id="subtraction"><a href="#subtraction">Subtract rectangle heights to get step heights</a></h2>
             <p>
-                Clearly the step heights in the Natural Numbers Staircase are all $1$. The Square Numbers Staircase is more interesting — as you walk right, its step heights are increasing odd numbers.
+                Clearly the step heights in the Natural Numbers Staircase are all $1$. The Square Numbers Staircase is more interesting—as you walk right, its step heights are increasing odd numbers.
             </p>
             <figure>
                 <img loading="lazy" width="600" height="327.8" src="/images/step-height.png" alt="Step heights of the Natural Numbers Staircase, the Square Numbers Staircase, and the General Staircase are depicted by vertical arrows that start from the previous rectangle to the next rectangle. In the Square Numbers Staircase, the rectangle heights are 0, 1, 4, 9, 16, …, so the step heights are the successive differences 1-0=1, 4-1=3, 9-4=5, 16-9=7,….">
@@ -462,7 +464,7 @@ import Article from "../../layouts/Article.astro"
             </p>
             <ul>
                 <li>First recognize $g(n)$ as the differences $f^-(n)$ of some $f(n)$.</li>
-                <li is:raw>Now apply the Fundamental Theorem to conclude$$\sum_{n=a}^{b-1}g(n)=f(b)-f(a).$$</li>
+                <li is:raw>Next apply the Fundamental Theorem to conclude$$\sum_{n=a}^{b-1}g(n)=f(b)-f(a).$$</li>
             </ul>
             <div class="ex">
                 <b>Example.</b> To compute the sum
@@ -472,7 +474,7 @@ import Article from "../../layouts/Article.astro"
                 </div>
                 we recognize $2n+1$ as the differences of $n^2$ since 
                 $$(n^2)^-=2n+1.$$
-                So
+                Therefore,
                 <div class="math">
                     <div class="m" is:raw>$$\sum_{n=0}^{50-1}(2n+1)=n^2{\Large\vert}^{50}_0$$</div>
                     <div class="m" is:raw>$$=50^2-0^2=2500.$$</div>
@@ -483,14 +485,10 @@ import Article from "../../layouts/Article.astro"
         <section>
             <h2 id="finite-calculus"><a href="#finite-calculus">Finite calculus</a></h2>
             <p>
-                The staircase math we've been talking about is more commonly called <em>finite calculus</em>, and it essentially involves reinterpreting addition and subtraction geometrically. 
+                There is actually a bit more to finite calculus.
             </p>
-        </section>
-        <!-- Section: Subtraction -->
-        <section>
-            <h2 id="height-difference"><a href="#height-difference">Subtraction as change in height</a></h2>
             <p>
-                In terms of geometry, subtraction just means computing the step height as the difference in height between two adjacent rectangles.
+                We already saw how to interpret subtraction geometrically—we computed step height as the difference in height between two adjacent rectangles.
             </p>
             <figure>
                 <img loading="lazy" width="600" height="153.05" src="/images/subtract.png" alt="The difference in height of two adjacent rectangles of heights f(n) and f(+1) is f(n+1)-f(n) and denoted by f^-(n).">
@@ -498,9 +496,9 @@ import Article from "../../layouts/Article.astro"
         </section>
         <!-- Section: Addition as signed areas -->
         <section>
-            <h2 id="signed-area"><a href="#signed-area">Addition as signed area</a></h2>
+            <h2 id="signed-area"><a href="#signed-area">Add rectangle heights to get signed area</a></h2>
             <p>
-                With addition though, the preferred geometric interpretation in finite calculus is in terms of <em>signed areas</em>.
+                With addition though, the preferred geometric interpretation in finite calculus is in terms of <em>signed areas</em>. Here is how this works.
             </p>
             <p>
                 Start with flat land.
@@ -532,11 +530,11 @@ import Article from "../../layouts/Article.astro"
                 </svg>
             </figure>
             <p>
-                Overall, the <strong>signed area</strong> of a shape is how much dirt we gain or lose compared to the barren, flat land we started with — it is the sum of the positive heights (for mounds) and negative heights (for holes).
+                Overall, the <strong>signed area</strong> of a shape is how much dirt we gain or lose compared to the barren, flat land we started with—it is the sum of the positive heights (for mounds) and the negative heights (for holes).
             </p>
             <figure>
                 <svg width="30em" viewBox="-2 0 170 94">
-                    <title>Upper picture: Signed area of land with one rectangular mound of height 2 and a rectangular mound of height 1 has area 3 more than the original flat land. Lower picture: Signed area of land with two square holes of height -1 has area -2 compared to the original flat land.</title>
+                    <title>Upper picture: Land with a rectangular mound of height 2 and a rectangular mound of height 1. Its signed area is 3 units. Lower picture: Land with two square holes each of height -1. Its signed area is -2..</title>
                     <defs>
                         <g id="brace">
                             <text font-size="8" x="-2" y="22" font-family="Billy">SIGNED<tspan x="3" dy="8">AREA</tspan></text>
@@ -625,7 +623,7 @@ import Article from "../../layouts/Article.astro"
                 </svg>
             </figure>
             <p>
-                Visualizing sums as signed areas is clutch because simple shapes have simple areas, so in the same way that we find the area of a triangle, we can find the sum
+                Visualizing sums as signed areas is clutch because simple shapes have simple areas. So in the same way that we find the area of a triangle, we can compute the sum
             </p>
             <figure>
                 <svg id="ga" width="30em" viewBox="0 0 118 77">
@@ -701,7 +699,8 @@ import Article from "../../layouts/Article.astro"
                     <div class="m" is:raw>$$\xRightarrow{\displaystyle\times \frac{1}{r-1}}\quad$$</div>
                     <div class="m" is:raw>$$\sum_{n=a}^{b-1}r^n=\left.\frac{r^n}{r-1}\right\rvert_a^b$$</div>
                 </div>
-                This is the <em>geometric series formula</em> from high school algebra, often written with $a=0$.
+                This is the <em>geometric series formula</em> from high school algebra. You have probably seen it in the special case $a=0$ like this:
+                <div is:raw>$$1+r+r^2+\cdots+r^{n-1}=\frac{r^n-1}{r-1}$$</div>
             </div>
             <div class="ex">
                 <b>Example.</b> Applying summation to $n=\tfrac12(2n+1)-\tfrac12\cdot 1$ gives
@@ -745,7 +744,7 @@ import Article from "../../layouts/Article.astro"
     /* SVG: Squares with hover */
     .sq {
         fill-opacity: .2;
-        fill: rgb(224, 127, 58);
+        fill: rgb(164, 107, 66);
         width: 10px;
         height: 10px;
     }
