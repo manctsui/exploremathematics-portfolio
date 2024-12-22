@@ -55,7 +55,8 @@ import ArticleNavNext from '../components/articleNavNext.astro';
             <ArticleNavNext></ArticleNavNext>
             <section>
                 <nav>
-                    READ NEXT<br><a href={nexturl}>{nextname}&nbsp;<div id="b">→</div></a>(Under construction)
+                    READ NEXT<br><a href={nexturl}>{nextname}&nbsp;<div id="b">→</div></a>
+                    <br>(Under construction)
                 </nav>
             </section>
         </article>
@@ -175,11 +176,4 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     /* Custom math classes */
     .math {text-align: center;}
     .m {display: inline-block;}
-    .lead {
-        font-variant: small-caps;
-        font-weight: bold;
-        font-size: 130%;
-        /* Ideal: slab serif */
-        font-family: 'American Typewriter', 'Courier 10 Pitch', Courier, 'Courier New', 'Droid Serif', monospace;
-    }
 </style>
