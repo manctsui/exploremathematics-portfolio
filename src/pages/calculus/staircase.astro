@@ -1,5 +1,6 @@
 ---
 import Article from "../../layouts/Article.astro"
+import Aside from "../../components/aside.astro"
 ---
 <Article
     title = "Staircase Calculus"
@@ -13,10 +14,10 @@ import Article from "../../layouts/Article.astro"
     <!-- nexturl="/calculus/infinitesimal-calculus" -->
     <Fragment slot="article">
         <!-- Introductory section -->
+        <h1>Staircase<br>Calculus</h1>
         <section>
-            <h1>Staircase<br>Calculus</h1>
             <p>
-                Much of the intuition behind infinitesimal calculus—the calculus you see in school—actually comes from understanding how staircases work. Compared to infinitesimal calculus, the mathematics of staircases—more commonly known as <em>finite calculus</em><span class="aside" role="note">Other names for finite calculus include discrete calculus, sequence calculus, and calculus of finite differences.</span>—is much, much simpler. In fact, here is what the <strong>Fundamental Theorem of Finite Calculus</strong> tells us.
+                Much of the intuition behind the calculus you see in school actually comes from understanding how staircases work. Compared to school calculus, the mathematics of staircases—more commonly known as <em>finite calculus</em><Aside>Other names for finite calculus: discrete calculus, sequence calculus, calculus of finite differences.</Aside>—is much simpler. In fact, here is what the <strong>Fundamental Theorem of Finite Calculus</strong> tells us.
             </p>
             <figure>
                 <svg id="staircase" role="img" viewBox="0 0 143 98">
@@ -70,7 +71,7 @@ import Article from "../../layouts/Article.astro"
         <section>
             <p>
                 The simplest pattern is the <strong>Natural Numbers Staircase</strong>, where the first rectangle has height 1, the second rectangle has height 2, and so on.
-                <span class="aside" role="note">
+                <Aside>
                     Everything we discuss here also works if we replace the natural numbers by the integers, resulting in the <strong>Integer Staircase</strong> that extends both leftward and rightward:
                         <!-- Integers Staircase (aside) -->
                         <svg role="img" viewBox="20 20 95 80">
@@ -78,7 +79,7 @@ import Article from "../../layouts/Article.astro"
                             <path d="M30 90h10v-10h10v-10h10v-10h10v10v-20h10v20v-30h10v30v-40h10v40M50 70h60M103 27l4-4-0.5 2-0.1-2-1 0.4M28 92l-4 4 0.5-2 0.1 2 2-0.4-2.6 0.8" stroke="black" stroke-width=".6"/>
                             <text x="29" y="88" fill="#1971c2" font-size="9">-2<tspan dx="3" dy="-10">-1</tspan><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
                         </svg>
-                </span>
+                </Aside>
             </p>
             <figure>
                 <!-- Natural Numbers Staircase -->
@@ -716,7 +717,7 @@ import Article from "../../layouts/Article.astro"
                 </div>
             </div>
             <p>
-                We can find fancier sums by developing finite calculus further, but we'll stop here. Let's now see how infinitesimal calculus works.
+                We can find fancier sums by developing finite calculus further, but we'll stop here. Let's now see how school calculus, aka infinitesimal calculus, works.
             </p>
         </section>
     </Fragment>
