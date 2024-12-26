@@ -23,7 +23,7 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     <!-- Links: fonts, icon, KaTeX (CSS, main, auto-render), hover.js -->
     <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Italic.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Bold.woff2" as="font" type="font/woff2" crossorigin> -->
     <link rel="preload" fetchpriority="high" href="/fonts/Billy.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Load KaTeX JS defer, but download earlier than KaTeX styling (so JS can parse math while KaTeX CSS is being fetched) -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
@@ -80,39 +80,35 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     /* * {background-color: rgba(200, 0, 0, .1);} */
     @font-face {font-family:'Billy'; src: url("/fonts/Billy.woff2");}
     @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Regular.woff2");}
-    @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Bold.woff2"); font-weight: bold;}
+    /* Use fake bold to reduce network request. */
+    /* @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Bold.woff2"); font-weight: bold;} */
     @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Italic.woff2"); font-style: italic;}
-    html {font: 1rem BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Lucida Grande', sans-serif; scroll-behavior: smooth;}
+    html {font: 1rem 'Segoe UI', 'Noto Sans', 'Lucida Grande', sans-serif; scroll-behavior: smooth;}
     body {margin: 0;}
     /* Section default left margin; use a new class not wrapped in section to opt out. */
     section {
-        font-family: Merriweather, Georgia, serif;
+        /* font: 1.1rem/1.65 Georgia, serif; */
+        font: 1rem/1.7 Merriweather, Georgia, serif;
         content-visibility: auto;
         contain-intrinsic-size: auto 10vh;
         margin-left: min(max(1rem, 100vw - 50rem), 18rem);
+        margin-right: .8rem;
     }
     .math, .ex, section > figure, section > p, section > ul {
         max-width: 34rem;
     }
     .ex {
-        border:1px solid black;
+        border: 1px solid black;
         padding: 1em;
         margin: 1em 0;
         border-radius: 0 0 0 12px;
     }
-    section > p, section > ul {
-        margin-right: .8rem;
-        line-height: 1.65;
-    }
     article > h1 {
-        font-size: 3.3rem;
+        font-size: 3.4em;
         line-height: 1.1;
-        border-top: solid .6rem black;
-        padding-top: .8rem;
+        border-top: solid .2em black;
+        padding-top: .3em;
         margin-left: min(max(1rem, 100vw - 50rem), 18rem);
-    }
-    section > h2 {
-        font-size: 2rem;
     }
     figure {
         display: flex;
@@ -144,9 +140,6 @@ import ArticleNavNext from '../components/articleNavNext.astro';
         text-decoration-thickness: .2em;
         text-decoration-skip-ink: none;
     }
-    h2 > a {
-        text-decoration: none;
-    }
 
     /* External noncritical CSS, like hover effects, below-fold items
     */
@@ -160,14 +153,6 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     }
     ::selection {
         background: #ffdf75;
-    }
-    
-    /* KaTeX CSS customization */
-    .katex {
-        font-size: 1.1em;
-    }
-    .katex-display {
-        margin-top:0.7em;
     }
     /* Custom math classes */
     .math {text-align: center;}

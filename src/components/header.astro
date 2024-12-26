@@ -1,15 +1,12 @@
 <header>
     <!-- stroke="#cccccc" -->
     <!-- stroke="#000" -->
-    <svg role="img" aria-label="Website logo" viewBox="-2 -10 90 54" width="5rem"><path d="M22 40c7 0 21-5 28-8s21-10 21-14S55 6 44 1c-3-1-4-2-12 0C15 6 0 8 0 11s10 9 21 15c15 8 22 9 29 10s21-2 21-4-16-8-21-10-10-3-14-4-9-2-14 0S0 26 0 29s15 10 22 11z" stroke="#000" stroke-width="2" fill="none"/></svg><a href="/"><h1>EXPLORE<br>MATHEMATICS</h1></a>
+    <a href="/">
+        <svg role="img" aria-label="Website logo" viewBox="-2 -10 90 54" width="5rem"><path d="M22 40c7 0 21-5 28-8s21-10 21-14S55 6 44 1c-3-1-4-2-12 0C15 6 0 8 0 11s10 9 21 15c15 8 22 9 29 10s21-2 21-4-16-8-21-10-10-3-14-4-9-2-14 0S0 26 0 29s15 10 22 11z" stroke="#3f3f3f" stroke-width="2" fill="none"/></svg><h1>EXPLORE<br>MATHEMATICS</h1>
+    </a>
 </header>
 
 <style is:global>
-    header
-    {
-        padding: 1rem 0 0 3%;
-        display: flex;
-    }
     header h1 {
         font-size: 1.4em;
         line-height: .9;
@@ -18,8 +15,16 @@
         background-clip: text;
         color: transparent;
     }
+    header a:hover {
+        opacity: 1;
+    }
     header a
     {
+        display: flex;
+        margin: 1em 0 0 3%;
+        max-width: 16em;
         text-decoration: none;
+        opacity: .5;
+        transition: .4s;
     }
 </style>

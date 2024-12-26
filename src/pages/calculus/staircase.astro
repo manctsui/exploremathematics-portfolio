@@ -20,13 +20,13 @@ import Aside from "../../components/aside.astro"
                 Much of the intuition behind the calculus you see in school actually comes from understanding how staircases work. Compared to school calculus, the mathematics of staircases—more commonly known as <em>finite calculus</em><Aside>Other names for finite calculus: discrete calculus, sequence calculus, calculus of finite differences.</Aside>—is much simpler. In fact, here is what the <strong>Fundamental Theorem of Finite Calculus</strong> tells us.
             </p>
             <figure>
-                <svg id="staircase" role="img" viewBox="0 0 143 98">
+                <svg id="staircase" role="img" viewBox="0 0 143 101">
                     <title>Fundamental Theorem of Finite Calculus: On a staircase, the step heights you climb add up to your elevation gain.</title>
                     <style>
                     @keyframes rot{0%{rotate:0deg;}50%{rotate:-1.4deg;}}
                     #arm{transform-origin:left;animation:rot .3s infinite;}
                     </style>
-                    <text font-size="4" x="6" y="7" fill="grey">FUNDAMENTAL THEOREM OF FINITE CALCULUS</text>
+                    <text font-size="4.3" x="6" y="7" fill="grey">FUNDAMENTAL THEOREM OF FINITE CALCULUS</text>
                     <text font-size="6" x="6" y="15">On a staircase,</text>
                     <text font-size="6" x="6" y="22"><tspan fill="#e03131">the step heights you climb</tspan>&nbsp;add up to&nbsp;<tspan fill="#1971c2">your elevation gain.</tspan>
                     </text>
@@ -74,7 +74,7 @@ import Aside from "../../components/aside.astro"
                 <Aside>
                     Everything we discuss here also works if we replace the natural numbers by the integers, resulting in the <strong>Integer Staircase</strong> that extends both leftward and rightward:
                         <!-- Integers Staircase (aside) -->
-                        <svg role="img" viewBox="20 20 95 80">
+                        <svg role="img" viewBox="16 16 109 80">
                             <title>Integers Staircase: As you walk right, the staircase goes up with step heights 1, 2, 3, and so on. As you walk left, the staircase goes down to the basement with step heights -1, -2, -3, and so on.</title>
                             <path d="M30 90h10v-10h10v-10h10v-10h10v10v-20h10v20v-30h10v30v-40h10v40M50 70h60M103 27l4-4-0.5 2-0.1-2-1 0.4M28 92l-4 4 0.5-2 0.1 2 2-0.4-2.6 0.8" stroke="black" stroke-width=".6"/>
                             <text x="29" y="88" fill="#1971c2" font-size="9">-2<tspan dx="3" dy="-10">-1</tspan><tspan dx="6" dy="-10">0</tspan><tspan dx="8" dy="-10">1</tspan><tspan dx="6" dy="-10">2</tspan><tspan dx="6" dy="-10">3</tspan><tspan dx="6" dy="-10">4</tspan></text>
@@ -83,7 +83,7 @@ import Aside from "../../components/aside.astro"
             </p>
             <figure>
                 <!-- Natural Numbers Staircase -->
-                <svg width="15em" viewBox="7 19 87 53">
+                <svg width="15em" viewBox="7 19 87 57">
                     <title>Natural Numbers Staircase</title>
                     <text font-size="6" x="72" y="70">... ground</text>
                     <!-- stairs+ground, arrow upstairs -->
@@ -98,7 +98,7 @@ import Aside from "../../components/aside.astro"
             </p>
             <figure>
                 <!-- Square Numbers Staircase -->
-                <svg width="13em" role="img" viewBox="0 82 73 99">
+                <svg width="13em" role="img" viewBox="0 82 73 104">
                     <title>Square Numbers Staircase</title>
                     <!-- ground -->
                     <path stroke="black" stroke-width=".6" d="M4 180h45 M14 180v-10h10v10v-40h10v40v-90h10v90"/>
@@ -110,7 +110,7 @@ import Aside from "../../components/aside.astro"
                 Finally, the <strong>General Staircase</strong> is built from rectangles of height $f(n)$ where $f$ is a function with natural numbers inputs $n$.
             </p>
             <figure>
-                <svg width="13em" role="img" viewBox="-5 0 310 260">
+                <svg width="13em" role="img" viewBox="-5 0 310 269">
                     <title>General Staircase</title>
                     <image height="200" width="300" href="/images/general-staircase.png" />
                     <path d="M7 253 v-45h45v45v-90h45v90v-135h45v135h45v-160h45v160v-224h45v224h10m0 0h-290" stroke-width="3" stroke="black"></path>
@@ -188,7 +188,7 @@ import Aside from "../../components/aside.astro"
                 With the Natural Numbers Staircase, this means that the difference of two numbers is a sum of that many $1$'s.
             </p>
             <figure>
-                <svg width="19em" role="img" viewBox="48 10 98 61">
+                <svg width="19em" role="img" viewBox="48 10 98 65">
                     <title>
                         In the Natural Numbers Staircase, walking from the rectangle of height 1 to the rectangle of height 4 results in an elevation gain of 4-1=3. Or we can write this as 1+1+1 if we add up the intermediate step heights.
                     </title>
@@ -226,7 +226,7 @@ import Aside from "../../components/aside.astro"
             </p>
             <figure>
                 <!-- Square Numbers Staircase, Step heights -->
-                <svg width="14em" role="img" viewBox="45 71 73 110">
+                <svg width="14em" role="img" viewBox="45 71 73 115">
                     <title>
                         In the Square Numbers Staircase, walking from the ground (height 0) to the rectangle of height 9 results in an elevation gain of 9-0=9. Or we can write this as 1+3+5 if we add up the intermediate step heights.
                     </title>
@@ -501,7 +501,8 @@ import Aside from "../../components/aside.astro"
             <figure>
                 <svg id="flatland" width="13em" viewBox="0 0 62 16">
                     <title>Flat land</title>
-                    <rect x="1" y="1" class="s"/><rect x="11" y="1" class="s"/><rect x="21" y="1" class="s"/><rect x="31" y="1" class="s"/><rect x="41" y="1" class="s"/><rect x="51" y="1" class="s"/><rect x="1" y="11" class="s"/><rect x="11" y="11" class="s"/><rect x="21" y="11" class="s"/><rect x="31" y="11" class="s"/><rect x="41" y="11" class="s"/><rect x="51" y="11" class="s"/><path d="M1 1h60" stroke="black" stroke-width=".4"/><path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/></svg>
+                    <rect x="1" y="1" class="s"/><rect x="11" y="1" class="s"/><rect x="21" y="1" class="s"/><rect x="31" y="1" class="s"/><rect x="41" y="1" class="s"/><rect x="51" y="1" class="s"/><rect x="1" y="11" class="s"/><rect x="11" y="11" class="s"/><rect x="21" y="11" class="s"/><rect x="31" y="11" class="s"/><rect x="41" y="11" class="s"/><rect x="51" y="11" class="s"/><path d="M1 1h60" stroke="black" stroke-width=".4"/><path d="M1 11h60M11 15V1M21 15V1M31 15V1M51 15V1M41 15V1" stroke="#d2bab0" stroke-width=".3" stroke-dasharray=".2 .8"/>
+                </svg>
             </figure>
             <p>
                 If we build a square mound, we gain one square of dirt.
@@ -528,7 +529,7 @@ import Aside from "../../components/aside.astro"
                 Overall, the <strong>signed area</strong> of a shape is how much dirt we gain or lose compared to the barren, flat land we started with—it is the sum of the positive heights (for mounds) and the negative heights (for holes).
             </p>
             <figure>
-                <svg width="30em" viewBox="-2 0 172 94">
+                <svg width="30em" viewBox="-2 0 172 99">
                     <title>Upper picture: Land with a rectangular mound of height 2 and a rectangular mound of height 1. Its signed area is 3 units. Lower picture: Land with two square holes each of height -1. Its signed area is -2..</title>
                     <defs>
                         <g id="brace">
@@ -597,7 +598,7 @@ import Aside from "../../components/aside.astro"
                 The next picture shows a signed area of zero due to cancellations between positive and negative areas. So this landscape has the same amount of dirt as the original flat land.
             </p>
             <figure>
-                <svg width="28em" viewBox="-2 3 166 42">
+                <svg width="28em" viewBox="-2 0 166 46">
                     <title>Signed area of land with a square mound and a square hole has the same area as the original flat land.</title>
                     <use xlink:href = "#brace"/>
                     <text font-size="8" x="91" y="25">= 0 + 1 + 0 + -1 + 0 = 0</text>
@@ -676,12 +677,12 @@ import Aside from "../../components/aside.astro"
                 $$
                 and the summation rules are
             </p>
-                <div class="math">
-                    <div class="m" is:raw>$$\sum_{n=a}^{b}\left[f(n)+g(n)\right]\,$$</div>
-                    <div class="m" is:raw>$$=\sum_{n=a}^{b}f(n)+\sum_{n=a}^{b}g(n)$$</div>
-                </div>
+            <div class="math">
+                <div class="m" is:raw>$$\sum_{n=a}^{b}\left[f(n)+g(n)\right]\,$$</div>
+                <div class="m" is:raw>$$=\sum_{n=a}^{b}f(n)+\sum_{n=a}^{b}g(n)$$</div>
+            </div>
             <p is:raw>
-                $$\sum_{n=a}^{b}c\cdot f(n) = c\, \sum_{n=a}^{b}f(n)$$
+                $$\sum_{n=a}^{b}c\cdot f(n) = c\, \sum_{n=a}^{b}f(n)\\[3em]$$
             </p>
             <div class="ex">
                 <b>Example.</b> Applying the last rule to the Exponential Staircase gives
@@ -691,7 +692,7 @@ import Aside from "../../components/aside.astro"
                     <div class="m" is:raw>$$\sum_{n=a}^{b-1}r^n=\left.\frac{r^n}{r-1}\right\rvert_a^b$$</div>
                 </div>
                 This is the <em>geometric series formula</em> from high school algebra. You have probably seen it in the special case $a=0$ like this:
-                <div is:raw>$$1+r+r^2+\cdots+r^{n-1}=\frac{r^n-1}{r-1}$$</div>
+                <div is:raw>$$1+r+r^2+\cdots+r^{b-1}=\frac{r^b-1}{r-1}$$</div>
             </div>
             <div class="ex">
                 <b>Example.</b> Applying summation to $n=\tfrac12(2n+1)-\tfrac12\cdot 1$ gives
