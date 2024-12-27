@@ -133,7 +133,7 @@ import Aside from "../../components/aside.astro"
             <p is:raw>
                 In general, the <span class="m">$n$th</span> step height is the difference in height between the <span class="m">$n$th</span> rectangle and the <span class="m">$(n+1)$st</span> rectangle. So in the General Staircase, the <span class="m">$n$th</span> step height is
                 $$f^{\htmlId{h-minus-1}{-}}(n)=f(n+1)-f(n).$$
-                We introduce this handy <span id="h-minus" onmouseover="hOver(this)" onmouseout="hOut(this)">superscript minus sign</span> notation to remind us to <em>subtract</em>. Therefore the <span class="m">$n$th</span> step height of the Natural Numbers Staircase and the Square Numbers Staircase can also be calculated algebraically as follows.
+                We introduce this handy <span id="h-minus" onmouseover="hOver(this)" onmouseout="hOut(this)">superscript minus sign notation</span> to remind us to <em>subtract</em>. Therefore the <span class="m">$n$th</span> step height of the Natural Numbers Staircase and the Square Numbers Staircase can also be calculated algebraically as follows.
             </p>
             <table>
                 <colgroup>
@@ -459,7 +459,7 @@ import Aside from "../../components/aside.astro"
             </p>
             <ul>
                 <li>First recognize $g(n)$ as the differences $f^-(n)$ of some $f(n)$.</li>
-                <li is:raw>Next apply the Fundamental Theorem to conclude$$\sum_{n=a}^{b-1}g(n)=f(b)-f(a).$$</li>
+                <li is:raw>Next apply the Fundamental Theorem to conclude$$\sum_{n=a}^{b-1}g(n)=f(b)-f(a).\\[2em]$$</li>
             </ul>
             <div class="ex">
                 <b>Example.</b> To compute the sum
@@ -624,11 +624,10 @@ import Aside from "../../components/aside.astro"
             <figure>
                 <svg id="ga" width="30em" viewBox="-3 0 121 77">
                     <title>The sum 1+2+3+…+99+100 is equal to the area underneath the Natural Numbers Staircase from the first step to the hundredth step. This staircase is a jagged right triangle of width 100 and height 100. Its area is half the area of the rectangle obtained by piecing an upside down copy of this triangle to itself. The rectangle has width 100 and height 101. Therefore the original sum 1+2+3+…+99+100 equals (1/2) × 100 × 101.</title>
-                    <style>#ga{circle{r:.2px;}}</style>
                     <!-- Curly braces: vert (top, bot), horiz (top, bot) -->
                     <path style="stroke:#000;stroke-width:.3" d="M108 13s-1-1-1-2 0-9-2-9m3 11s-1 0-1 2c0 0 0 7-2 7M109 45s-1-1-1-2 0-9-2-9m3 11s-1 0-1 2c0 0 0 7-2 8.5M94 26s0-1 1-1 8 0 8-2m-9 3s0-1-1-1-9 0-9-2M95.5 60s0-1 1-1 8 0 8-2m-9 3s0-1-1-1-9 0-9-2"/>
                     <!-- pink grid, its border -->
-                    <path d="M89 34V50M87 34V52m4-4H85m6 0H85m8-2H85m8 0H85m4 4H85m4 0H85m2 2H85m2 0H85m6-1V48v-14V48m4-14V48M93 34V46m10-10H85m16 2H85m14 2H85m12 2H85m18-8v2m-2-2v4m-4-4v8m2-8v6m-4 4H85" stroke="#fcb3b3" stroke-width=".1"/>
+                    <path d="M89 34V50M87 34V52m4-4H85m6 0H85m8-2H85m8 0H85m4 4H85m4 0H85m2 2H85m2 0H85m6-1V48v-14V48m4-14V48M93 34V46m10-10H85m16 2H85m14 2H85m12 2H85m18-8v2m-2-2v4m-4-4v8m2-8v6m-4 4H85" stroke="#ffc4c4" stroke-width=".1"/>
                     <path d="M85 54V34h20v2" stroke="#e53939" stroke-width=".3"/>
                     <!-- top black grid, its border -->
                     <path d="M103 12H93h10H93m-4 4v6m2-8v8m-4-4v4m-2-2v2m18-8H91h12H91m12 2H89m14 0H89m14 2H87h16H87m16 2H85m18 0H85M95 10v12M93 12v10M103 4h-2m2 2h-4m4 4h-8m8-2h-6m4-4v18M99 6v16M97 8v14" stroke="#ced4da" stroke-width=".2"/>
@@ -644,7 +643,7 @@ import Aside from "../../components/aside.astro"
                     <!-- text -->
                     <g font-size="4"><text x="92" y="30">100</text><text x="109" y="14">100</text><text x="93" y="64">100</text><text x="110" y="46">101</text></g>
                     <path d="M61 45h4M61 71h4" stroke="black" stroke-width=".4"/>
-                    <text font-size="4" fill="#e53939" x="86" y="39">Flipped<tspan x="88" dy="3">copy</tspan></text>
+                    <text font-size="4" fill="#e53939" x="86" y="39">Flipped<tspan x="86" dy="3.4">copy</tspan></text>
                     <g font-size="6"><text x="-3" y="15">1 + 2 + 3 + ··· + 99 + 100 = </text><text x="66" y="15">AREA</text><text x="57" y="47">=</text><text x="62.5" y="44">1</text><text x="62" y="50">2</text><text x="66" y="46.5">AREA</text><text x="57" y="73">=</text><text x="62.5" y="70">1</text><text x="62" y="76">2</text><text x="66" y="73"> × 100 × 101</text></g>
                     </svg>
             </figure>
@@ -667,22 +666,31 @@ import Aside from "../../components/aside.astro"
             <figure>
                 <img loading="lazy" width="600" height="215.6" src="/images/multiply.png" alt="The graph of a function stretched vertically by a factor of 2.">
             </figure>
-            <p is:raw>
+            <p>
                 In symbols, the subtraction rules are then
-                $$
-                \begin{align*}
-                (f+g)^-(n)&=f^-(n)+g^-(n)\\[2ex]
-                (c\cdot f)^-(n)&=c\cdot f^-(n)
-                \end{align*}
-                $$
+                <span is:raw>
+                    $$
+                    \begin{align*}
+                    (f+g)^-(n)&=f^-(n)+g^-(n)\\[2ex]
+                    (c\cdot f)^-(n)&=c\cdot f^-(n)
+                    \end{align*}
+                    $$
+                </span>
                 and the summation rules are
-            </p>
-            <div class="math">
-                <div class="m" is:raw>$$\sum_{n=a}^{b}\left[f(n)+g(n)\right]\,$$</div>
-                <div class="m" is:raw>$$=\sum_{n=a}^{b}f(n)+\sum_{n=a}^{b}g(n)$$</div>
-            </div>
-            <p is:raw>
-                $$\sum_{n=a}^{b}c\cdot f(n) = c\, \sum_{n=a}^{b}f(n)\\[3em]$$
+                <span is:raw id="m-add">
+                    $$\sum_{n=a}^{b}\left[f(n)+g(n)\right]=\sum_{n=a}^{b}f(n)+\sum_{n=a}^{b}g(n)$$
+                </span>
+                <span is:raw id="m-add-small">
+                    $$
+                    \begin{split}
+                    \sum_{n=a}^{b}[f&(n)+g(n)]\\
+                    &=\sum_{n=a}^{b}f(n)+\sum_{n=a}^{b}g(n)
+                    \end{split}
+                    $$
+                </span>
+                <span is:raw>
+                    $$\sum_{n=a}^{b}c\cdot f(n) = c\, \sum_{n=a}^{b}f(n)\\[3em]$$
+                </span>
             </p>
             <div class="ex">
                 <b>Example.</b> Applying the last rule to the Exponential Staircase gives
@@ -741,14 +749,15 @@ import Aside from "../../components/aside.astro"
         height: 10px;
     }
     .s:hover{fill-opacity:.5;}
-    
+    /* SVG circle ellipses*/
+    #ga{circle{r:.2px;}}
     @media (max-width: 18rem) {
-        #m-ftfc {
+        #m-ftfc, #m-exponential {
             display: none;
         }
     }
     @media (min-width: 18rem) {
-        #m-ftfc-small {
+        #m-ftfc-small, #m-exponential-small {
             display: none;
         }
     }
@@ -783,13 +792,13 @@ import Aside from "../../components/aside.astro"
             display: none;
         }
     }
-    @media (max-width: 18rem) {
-        #m-exponential {
+    @media (max-width: 25rem) {
+        #m-add {
             display: none;
         }
     }
-    @media (min-width: 18rem) {
-        #m-exponential-small {
+    @media (min-width: 25rem) {
+        #m-add-small {
             display: none;
         }
     }

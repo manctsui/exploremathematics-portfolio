@@ -23,7 +23,7 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     <!-- Links: fonts, icon, KaTeX (CSS, main, auto-render), hover.js -->
     <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Italic.woff2" as="font" type="font/woff2" crossorigin>
-    <!-- <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Bold.woff2" as="font" type="font/woff2" crossorigin> -->
+    <link rel="preload" fetchpriority="high" href="/fonts/Merriweather-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" fetchpriority="high" href="/fonts/Billy.woff2" as="font" type="font/woff2" crossorigin>
     <!-- Load KaTeX JS defer, but download earlier than KaTeX styling (so JS can parse math while KaTeX CSS is being fetched) -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
@@ -81,7 +81,7 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     @font-face {font-family:'Billy'; src: url("/fonts/Billy.woff2");}
     @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Regular.woff2");}
     /* Use fake bold to reduce network request. */
-    /* @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Bold.woff2"); font-weight: bold;} */
+    @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Bold.woff2"); font-weight: bold;}
     @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Italic.woff2"); font-style: italic;}
     html {font: 1rem 'Segoe UI', 'Noto Sans', 'Lucida Grande', sans-serif; scroll-behavior: smooth;}
     body {margin: 0;}
