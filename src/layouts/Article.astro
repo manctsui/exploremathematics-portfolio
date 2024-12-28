@@ -64,7 +64,7 @@ import ArticleNavNext from '../components/articleNavNext.astro';
             <ArticleNavNext></ArticleNavNext>
             <section>
                 <nav>
-                    READ NEXT<br><a href={nexturl}>{nextname}&nbsp;<div id="b">→</div></a>
+                    <p>Next: <a href={nexturl}>{nextname}</a></p>
                 </nav>
             </section>
         </article>
@@ -105,7 +105,7 @@ import ArticleNavNext from '../components/articleNavNext.astro';
         margin-left: min(max(1rem, 100vw - 50rem), 18rem);
     }
     section > h2 {
-        font-size: 2em;
+        font-size: 1.8em;
     }
     figure {
         display: flex;
