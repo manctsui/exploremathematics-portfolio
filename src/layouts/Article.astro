@@ -37,24 +37,22 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     </script>
     <!-- Load non-critical CSS asynchronously via JS with noscript fallback -->
     <!-- Load KaTeX CSS async as well -->
-    <!-- <link href="/public/styles/article.css" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
     <link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <script is:inline>
         function hOver(a) {
             let hs = document.querySelectorAll('[id^="' + a.id + '"]');
             hs.forEach(h => {
                 h.style.cssText += 'transition:.2s;';
-                h.classList.add(h.id + '-on');
+                h.classList.add(h.id + 'On');
             });
         }
         function hOut(a) {
             let hs = document.querySelectorAll('[id^="' + a.id + '"]');
             hs.forEach(h => {
-                h.classList.remove(h.id + '-on');
+                h.classList.remove(h.id + 'On');
             });
         }
     </script>
-    <!-- Favicon listed last -->
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
     <title>{title} | Explore Mathematics</title>
 </head>
@@ -67,7 +65,6 @@ import ArticleNavNext from '../components/articleNavNext.astro';
             <section>
                 <nav>
                     READ NEXT<br><a href={nexturl}>{nextname}&nbsp;<div id="b">→</div></a>
-                    <br>(Under construction)
                 </nav>
             </section>
         </article>
@@ -77,38 +74,38 @@ import ArticleNavNext from '../components/articleNavNext.astro';
 </html>
 
 <style is:global>
-    /* * {background-color: rgba(200, 0, 0, .1);} */
     @font-face {font-family:'Billy'; src: url("/fonts/Billy.woff2");}
     @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Regular.woff2");}
-    /* Use fake bold to reduce network request. */
     @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Bold.woff2"); font-weight: bold;}
     @font-face {font-family:'Merriweather'; src: local('Merriweather'), url("/fonts/Merriweather-Italic.woff2"); font-style: italic;}
     html {font: 1rem 'Segoe UI', 'Noto Sans', 'Lucida Grande', sans-serif; scroll-behavior: smooth;}
     body {margin: 0;}
     /* Section default left margin; use a new class not wrapped in section to opt out. */
     section {
-        /* font: 1.1rem/1.65 Georgia, serif; */
-        font: 1rem/1.7 Merriweather, Georgia, serif;
+        font: .95rem/1.7 Merriweather, Georgia, serif;
         content-visibility: auto;
         contain-intrinsic-size: auto 10vh;
         margin-left: min(max(1rem, 100vw - 50rem), 18rem);
-        margin-right: .8rem;
     }
     .math, .ex, section > figure, section > p, section > ul {
         max-width: 34rem;
+        margin-right: .8rem;
     }
     .ex {
         border: 1px solid black;
         padding: 1em;
-        margin: 1em 0;
+        margin: 3em 0;
         border-radius: 0 0 0 12px;
     }
     article > h1 {
         font-size: 3.4em;
         line-height: 1.1;
-        border-top: solid .2em black;
+        border-top: solid 12px black;
         padding-top: .3em;
         margin-left: min(max(1rem, 100vw - 50rem), 18rem);
+    }
+    section > h2 {
+        font-size: 2em;
     }
     figure {
         display: flex;
@@ -128,9 +125,9 @@ import ArticleNavNext from '../components/articleNavNext.astro';
         border: 1px solid black;
         padding: .7em .4em;
     }
-    @media (max-width: 32rem) {
+    @media (max-width: 20rem) {
         th, td {
-            padding: .4em;
+            padding: .2em;
         }
     }
     /* Formatting: selection, links (a), strong */
@@ -157,4 +154,5 @@ import ArticleNavNext from '../components/articleNavNext.astro';
     /* Custom math classes */
     .math {text-align: center;}
     .m {display: inline-block;}
+    .math > .m {padding-left:.3em}
 </style>

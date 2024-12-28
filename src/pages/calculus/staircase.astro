@@ -11,7 +11,6 @@ import Aside from "../../components/aside.astro"
     nexturl="/"
     nextname="Infinitesimal Calculus" 
 >
-    <!-- nexturl="/calculus/infinitesimal-calculus" -->
     <Fragment slot="article">
         <!-- Introductory section -->
         <h1>Staircase<br>Calculus</h1>
@@ -132,8 +131,8 @@ import Aside from "../../components/aside.astro"
             </figure>
             <p>
                 In general, the <span class="m">$n$th</span> step height is the difference in height between the <span class="m">$n$th</span> rectangle and the <span class="m">$(n+1)$st</span> rectangle. So in the General Staircase, the <span class="m">$n$th</span> step height is
-                <Fragment is:raw>$$f^{\htmlId{h-minus-1}{-}}(n)=f(n+1)-f(n).$$</Fragment>
-                We introduce this handy <span id="h-minus" onmouseover="hOver(this)" onmouseout="hOut(this)">superscript minus sign notation</span> to remind us to <em>subtract</em>. Therefore the <span class="m">$n$th</span> step height of the Natural Numbers Staircase and the Square Numbers Staircase can also be calculated algebraically as follows.
+                <Fragment is:raw>$$f^{\htmlId{hMinus1}{-}}(n)=f(n+1)-f(n).$$</Fragment>
+                We introduce this handy <span id="hMinus" onmouseover="hOver(this)" onmouseout="hOut(this)">superscript minus sign notation</span> to remind us to <em>subtract</em>. Therefore the <span class="m">$n$th</span> step height of the Natural Numbers Staircase and the Square Numbers Staircase can also be calculated algebraically as follows.
             </p>
             <table>
                 <colgroup>
@@ -271,27 +270,25 @@ import Aside from "../../components/aside.astro"
                 Thus the Fundamental Theorem is written algebraically as
             </p>
             <div class="math" id="m-ftfc">
-                <div class="m" is:raw>$$\htmlId{h-left-sum-1}{f^-(a)+f^-(a+1)+\dots+f^-(b-1)}$$</div>
-                <div class="m" is:raw>$$=\htmlId{h-right-difference-1}{f(b)-f(a)}$$</div>
+                <div class="m" is:raw>$$\htmlId{hLeftSum1}{f^-(a)+f^-(a+1)+\dots+f^-(b-1)}$$</div>
+                <div class="m" is:raw>$$=\htmlId{hRightDifference1}{f(b)-f(a)}$$</div>
             </div>
             <div class="math" id="m-ftfc-small">
-                <div class="m" is:raw>$$\htmlId{h-left-sum-1}{f^-(a)+f^-(a+1)+}$$</div>
-                <div class="m" is:raw>$$\htmlId{h-left-sum-3}{\dots+f^-(b-1)}$$</div>
-                <div class="m" is:raw>$$=\htmlId{h-right-difference-1}{f(b)-f(a)}$$</div>
+                <div class="m" is:raw>$$\htmlId{hLeftSum1}{f^-(a)+f^-(a+1)\,+}$$</div>
+                <div class="m" is:raw>$$\htmlId{hLeftSum3}{\dots+f^-(b-1)}$$</div>
+                <div class="m" is:raw>$$=\htmlId{hRightDifference1}{f(b)-f(a)}$$</div>
             </div>
-            <p>
+            <p is:raw>
                 or more elegantly as
-                <Fragment is:raw>
-                    $$\htmlId{h-left-sum-2}{\sum_{n=a}^{b-1}f^-(n)} = \htmlId{h-right-difference-2}{f(n){\Large\vert}^b_a}$$
-                </Fragment>
+                    $$\htmlId{hLeftSum2}{\sum_{n=a}^{b-1}f^-(n)} = \htmlId{hRightDifference2}{f(n){\Large\vert}^b_a}$$
                 upon adopting new notations $\Sigma$ and $\vert$. Here we read
             </p>
             <ul>
                 <li>
-                    <span class="h2" id="h-left-sum" onmouseover="hOver(this)" onmouseout="hOut(this)" is:raw>$\displaystyle\sum_{n=a}^{b-1}f^-(n)$</span> as <q>$f^-(n)$ summed from $a$ to $b-1$</q>, and
+                    <span id="hLeftSum" onmouseover="hOver(this)" onmouseout="hOut(this)" is:raw>$\displaystyle\sum_{n=a}^{b-1}f^-(n)$</span> as <q>$f^-(n)$ summed from $a$ to $b-1$</q>, and
                 </li>
                 <li>
-                    <span class="h2" id="h-right-difference" onmouseover="hOver(this)" onmouseout="hOut(this)" is:raw>$f(n){\Large\vert}^b_a$</span> as <q>$f(n)$ evaluated from $a$ to $b$</q>.
+                    <span id="hRightDifference" onmouseover="hOver(this)" onmouseout="hOut(this)" is:raw>$f(n){\Large\vert}^b_a$</span> as <q>$f(n)$ evaluated from $a$ to $b$</q>.
                 </li>
             </ul>
             <p>
@@ -392,14 +389,16 @@ import Aside from "../../components/aside.astro"
                     <td>
                         <div class="math">
                             <div class="m">$$f^-(n)$$</div>
-                            <div class="m">$$=f(n+1)-f(n)$$</div>
+                            <div class="m">$$=f(n+1)$$</div>
+                            <div class="m">$$-f(n)$$</div>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="math">
-                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}f^-(n)=f(n){\Large\vert}^b_a$$</div>
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}f^-(n)$$</div>
+                            <div class="m" is:raw>$$=f(n){\Large\vert}^b_a$$</div>
                             <div class="m">$$=f(b)-f(a)$$</div>
                         </div>
                     </td>
@@ -412,8 +411,12 @@ import Aside from "../../components/aside.astro"
                     </td>
                 </tr>
                 <tr>
-                    <td is:raw>
-                        $$\sum_{n=a}^{b-1}1=n{\Large\vert}^b_a=b-a$$
+                    <td>
+                        <div class="math">
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}1$$</div>
+                            <div class="m" is:raw>$$=n{\Large\vert}^b_a$$</div>
+                            <div class="m" is:raw>$$=b-a$$</div>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -435,7 +438,8 @@ import Aside from "../../components/aside.astro"
                     <th rowspan="2">Exponential Staircase<br>$\small f(n)=r^n$</th>
                     <td>
                         <div class="math">
-                            <div class="m" is:raw>$$(r^n)^-=r^{n+1}-r^n$$</div>
+                            <div class="m">$$(r^n)^-$$</div>
+                            <div class="m" is:raw>$$=r^{n+1}-r^n$$</div>
                             <div class="m">$$=(r-1)r^n$$</div>
                         </div>
                     </td>
@@ -443,7 +447,8 @@ import Aside from "../../components/aside.astro"
                 <tr>
                     <td>
                         <div class="math">
-                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}(r-1)r^n=r^n{\Large\vert}^b_a$$</div>
+                            <div class="m" is:raw>$$\sum_{n=a}^{b-1}(r-1)r^n$$</div>
+                            <div class="m" is:raw>$$=r^n{\Large\vert}^b_a$$</div>
                             <div class="m">$$=r^b-r^a$$</div>
                         </div>
                     </td>
@@ -461,7 +466,7 @@ import Aside from "../../components/aside.astro"
             </p>
             <ul>
                 <li>First recognize $g(n)$ as the differences $f^-(n)$ of some $f(n)$.</li>
-                <li is:raw>Next apply the Fundamental Theorem to conclude$$\sum_{n=a}^{b-1}g(n)=f(b)-f(a).\\[2em]$$</li>
+                <li is:raw>Next apply the Fundamental Theorem to conclude$$\sum_{n=a}^{b-1}g(n)=f(b)-f(a).$$</li>
             </ul>
             <div class="ex">
                 <b>Example.</b> To compute the sum
@@ -691,7 +696,7 @@ import Aside from "../../components/aside.astro"
                     $$
                 </span>
                 <span is:raw>
-                    $$\sum_{n=a}^{b}c\cdot f(n) = c\, \sum_{n=a}^{b}f(n)\\[3em]$$
+                    $$\sum_{n=a}^{b}c\cdot f(n) = c\, \sum_{n=a}^{b}f(n)$$
                 </span>
             </p>
             <div class="ex">
@@ -702,7 +707,10 @@ import Aside from "../../components/aside.astro"
                     <div class="m" is:raw>$$\sum_{n=a}^{b-1}r^n=\left.\frac{r^n}{r-1}\right\rvert_a^b$$</div>
                 </div>
                 This is the <em>geometric series formula</em> from high school algebra. You have probably seen it in the special case $a=0$ like this:
-                <div is:raw>$$1+r+r^2+\cdots+r^{b-1}=\frac{r^b-1}{r-1}$$</div>
+                <div class="math">
+                    <div class="m" is:raw>$$1+r+r^2+\cdots+r^{b-1}$$</div>
+                    <div class="m" is:raw>$$=\frac{r^b-1}{r-1}$$</div>
+                </div>
             </div>
             <div class="ex">
                 <b>Example.</b> Applying summation to $n=\tfrac12(2n+1)-\tfrac12\cdot 1$ gives
@@ -753,35 +761,35 @@ import Aside from "../../components/aside.astro"
     .s:hover{fill-opacity:.5;}
     /* SVG circle ellipses*/
     #ga{circle{r:.2px;}}
-    @media (max-width: 18rem) {
-        #m-ftfc, #m-exponential {
+    @media (max-width: 22rem) {
+        #m-ftfc, #m-exponential, #m-gauss {
             display: none;
         }
     }
-    @media (min-width: 18rem) {
-        #m-ftfc-small, #m-exponential-small {
+    @media (min-width: 22rem) {
+        #m-ftfc-small, #m-exponential-small, #m-gauss-small {
             display: none;
         }
     }
-    #h-left-sum, #h-right-difference { 
+    #hLeftSum, #hRightDifference { 
         border-radius:.5em;
         padding:.4em .3em .4em .3em;
         margin:.2em 0;
         border:1px dashed #ffb855;
         display:inline-flex;
     }
-    .h-left-sum-1-on, .h-left-sum-3-on {
+    .hLeftSum1On, .hLeftSum3On {
         background:#ffee72; border-radius:.4em; padding:.2em;
     }
-    .h-left-sum-2-on {
+    .hLeftSum2On {
         background:#ffee72; border-radius:.4em; padding:1.4em .3em;
     }
-    .h-right-difference-1-on, .h-right-difference-2-on {
+    .hRightDifference1On, .hRightDifference2On {
         background: #ffee72;
         padding: .6em .4em;
         border-radius: .5em;
     }
-    .h-left-sum-on, .h-right-difference-on {
+    .hLeftSumOn, .hRightDifferenceOn {
         background-color: #ffee72;
     }
     @media (max-width: 30rem) {
@@ -795,26 +803,26 @@ import Aside from "../../components/aside.astro"
         }
     }
     @media (max-width: 25rem) {
-        #m-add, #m-gauss {
+        #m-add {
             display: none;
         }
     }
     @media (min-width: 25rem) {
-        #m-add-small, #m-gauss-small {
+        #m-add-small {
             display: none;
         }
     }
     
     /* Math */
-    .h-minus-1-on {
+    .hMinus1On {
         padding:0 .2em;
         background:#ffee72;
         border-radius:50%;
     }
-    .h-minus-on {
+    .hMinusOn {
         background:#ffee72;
     }
-    #h-minus {
+    #hMinus {
         border-radius:.5em;
         padding:0 .2em;
         border:1px dashed #ffb855;

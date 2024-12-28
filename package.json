@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "minify": "html-minifier-terser dist/calculus/staircase/index.html --decode-entities --collapse-whitespace --remove-comments --minify-css --minify-js --sort-attributes --sort-class-name --output=dist/calculus/staircase/index2.html",
     "preview": "astro preview",
     "astro": "astro"
   },
