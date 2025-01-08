@@ -58,9 +58,7 @@ import Footer from '../components/footer.astro';
 <body>
     <Header />
     <main>
-        <article>
-            <slot name="article"></slot>
-        </article>
+        <slot name="app"></slot>
     </main>
 	<Footer />
 </body>
@@ -74,13 +72,13 @@ import Footer from '../components/footer.astro';
     html {font: 1rem 'Segoe UI', 'Noto Sans', 'Lucida Grande', sans-serif; scroll-behavior: smooth;}
     body {margin: 0;}
     /* Section default left margin; use a new class not wrapped in section to opt out. */
-    section {
+    main {
         font: .95rem/1.7 Merriweather, Georgia, serif;
         content-visibility: auto;
         contain-intrinsic-size: auto 10vh;
         margin-left: min(max(1rem, 100vw - 50rem), 18rem);
     }
-    .math, .ex, section > figure, section > p, section > ul {
+    .math, .ex, main > figure, main p, ul {
         max-width: 34rem;
         margin-right: .8rem;
     }
@@ -90,12 +88,12 @@ import Footer from '../components/footer.astro';
         margin: 3em 0;
         border-radius: 0 0 0 12px;
     }
-    article > h1 {
-        font-size: 3.4em;
+    main h1 {
+        font-size: 2em;
         line-height: 1.1;
         border-top: solid 12px black;
         padding-top: .3em;
-        margin-left: min(max(1rem, 100vw - 50rem), 18rem);
+        /* margin-left: min(max(1rem, 100vw - 50rem), 18rem); */
     }
     section > h2 {
         font-size: 1.8em;
@@ -117,11 +115,6 @@ import Footer from '../components/footer.astro';
     th, td {
         border: 1px solid black;
         padding: .7em .4em;
-    }
-    @media (max-width: 20rem) {
-        th, td {
-            padding: .2em;
-        }
     }
     /* Formatting: selection, links (a), strong */
     a {

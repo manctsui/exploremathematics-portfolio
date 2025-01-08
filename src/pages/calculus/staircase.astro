@@ -8,8 +8,6 @@ import Aside from "../../components/aside.astro"
     description = "Learn how calculus works intuitively from a picture of a staircase."
     keywords = "Calculus, Fundamental Theorem of Calculus, Finite Calculus, Discrete Calculus, Sequence Calculus, Differentiation, Integration"
     content = "/images/og-splash.png"
-    nexturl="/"
-    nextname="Infinitesimal Calculus" 
 >
     <Fragment slot="article">
         <!-- Introductory section -->
@@ -495,13 +493,13 @@ import Aside from "../../components/aside.astro"
             <figure>
                 <img loading="lazy" width="600" height="153.05" src="/images/subtract.png" alt="The difference in height of two adjacent rectangles of heights f(n) and f(+1) is f(n+1)-f(n) and denoted by f^-(n).">
             </figure>
+            <p>
+                With addition though, the preferred geometric interpretation in finite calculus is in terms of <em>signed areas</em>. Here is how this works.
+            </p>
         </section>
         <!-- Section: Addition as signed areas -->
         <section>
             <h2>Add rectangle heights to get signed area</h2>
-            <p>
-                With addition though, the preferred geometric interpretation in finite calculus is in terms of <em>signed areas</em>. Here is how this works.
-            </p>
             <p>
                 Start with flat land.
             </p>
@@ -738,6 +736,9 @@ import Aside from "../../components/aside.astro"
             <p>
                 We can find fancier sums by developing finite calculus further, but we'll stop here. Let's now see how school calculus, aka infinitesimal calculus, works.
             </p>
+            <nav>
+                <p>Next: <a href="">Infinitesimal Calculus</a> (Under construction)</p>
+            </nav>
         </section>
     </Fragment>
 </Article>

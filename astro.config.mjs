@@ -52,7 +52,7 @@ export default defineConfig({
           useShortDoctype: false,
 				},
 			},
-			Image: false,
+			Image: true,
 			JavaScript: false,
 			SVG: false,
 		}),

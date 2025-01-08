@@ -1,0 +1,98 @@
+---
+import App from "../../layouts/App.astro"
+---
+<App
+    title = "z-Test Calculator"
+    ogtitle = "z-Test Calculator"
+    description = "Comprehensive z-test calculator"
+    keywords = "Statistics, z-test, calculator"
+    content = ""
+>
+    <Fragment slot="app">
+        <h1>$z$-Test Calculator</h1>
+        <label class="input" for="popmean">
+            <input id="popmean" class="input__field" required placeholder="" type="text">
+            <span class="input__label">Population mean $\mu$</span>
+        </label>
+
+        Population standard deviation $\sigma$: <br>
+
+        <button id="compute">Compute</button>
+    </Fragment>
+</App>
+<style>
+    #compute {
+        display: block;
+        font-size: 1rem;
+        font-family: Merriweather, serif;
+        padding: .7em 1.2em;
+        margin: 2em 0;
+        background-color: rgb(255, 182, 140);
+        border: 2px solid black;
+        box-shadow: 5px 5px 0 0 black;
+
+        &:hover {
+            box-shadow: 4px 4px 0 0 black;
+            transform: translate(1px, 1px);
+        }
+        &:active {
+            box-shadow: 1px 1px 0 0 black;
+            transform: translate(3px, 3px);
+        }
+    }
+    input {
+        font-size: 1.1rem;
+        border-radius: 5px;
+        border: 2px solid rgb(72, 72, 72);
+        padding: .3em .7em;
+    }
+
+    input:focus {
+        border-color: black;
+    }
+    
+    input:user-invalid {
+        outline-color: red;
+    }
+
+    input:focus + label {
+        transform: translate(-15px,-10px) scale(0.9);
+    }
+
+
+    
+    .input {
+    position: relative;
+    }
+    
+    .input__label {
+        position: absolute;
+        color: hsl(0, 0%, 50%);
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        transform: translate(0, 0);
+        padding: 0 .2em;
+        margin-left: .4em;
+        margin-top: 1.4em;
+        transform-origin: 0 0;
+        background: white;
+        transition: transform 120ms ease-in;
+        font-size: .9rem;
+    }
+    .input__field {
+        box-sizing: border-box;
+        display: block;
+        /* width: 100%; */
+        border: 3px solid black;
+        background: transparent;
+        border-radius: var(--size-radius);
+        
+    }
+    .input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
+        transform: translate(.25rem, -65%) scale(.8);
+        color: hsl(0, 0%, 0%);
+    }
+
+
+</style>
