@@ -9,18 +9,103 @@ import App from "../../layouts/App.astro"
     content = ""
 >
     <Fragment slot="app">
+        <!-- <h1><i>z</i>-Test Calculator</h1> -->
         <h1>$z$-Test Calculator</h1>
-        <label class="input" for="popmean">
-            <input id="popmean" class="input__field" required placeholder="" type="text">
-            <span class="input__label">Population mean $\mu$</span>
-        </label>
-
-        Population standard deviation $\sigma$: <br>
-
-        <button id="compute">Compute</button>
+        <noscript>
+            Enable JavaScript for this calculator to work.
+        </noscript>
+        <!-- Div needed for first input label to have correct vertical position -->
+        <div id="form">
+            <label class="input" for="popmean">
+                <input id="popmean" class="input__field" required placeholder="" type="text">
+                <span class="input__label">Population mean <i>μ</i></span>
+            </label>
+            <label class="input" for="popstd">
+                <input id="popstd" class="input__field" placeholder="" type="text">
+                <span class="input__label">Population standard deviation <i>σ</i></span>
+            </label>
+            <label class="input" for="samplemean">
+                <input id="samplemean" class="input__field" required placeholder="" type="text">
+                <span class="input__label">Sample mean $\overline x$</span>
+            </label>
+            <label class="input" for="count">
+                <input id="count" class="input__field" required placeholder="" type="number" min="1">
+                <span class="input__label">Number of samples <i>n</i></span>
+            </label>
+            <button id="compute">Compute</button>
+        </div>
+        <div id="answer">
+            Boxed answer, initially hidden until generated. <br><br><br><br><br>
+        </div>
+        <div id="note">
+            How this works:
+            Details-Summary.
+            <ol>
+                <li>
+                    <b>Lookup table.</b> Store 10-20 values of <Fragment is:raw>$q(t)=\displaystyle\int_0^t\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$</Fragment>wrt $t$. Then use Simpson's rule to refine intermediate points up to 5 significant digits.
+                </li>
+                <li>
+                    JS uses double-precision floating points or 15-17 digits of precision. For arbitrary precision, use <code>decimal.js</code> library.
+                </li>
+                <li>
+                    <b>Simpson's rule.</b> By <a href="file:///C:/Users/mktsu/book-math/calculus/Stewart - Single Variable Calculus, 9e, Metric Version(2020).pdf#page=570">Stewart</a>, Simpson's rule (aka Simpson's 1/3 rule, and <i>not</i> <a href="https://en.wikipedia.org/wiki/Newton–Cotes_formulas#Closed_Newton–Cotes_formulas">Simpson's 3/8 rule</a>) approximates intermediate (local) area from $x=a$ to $x=b$ via
+                    <Fragment is:raw>$$\int_a^bf(x)\approx\frac{\Delta x}3[y_0+4y_1+2y_2+4y_3+2y_4+\cdots+y_{n-1}+y_n]$$</Fragment>    
+                    The error here is at most
+                    <Fragment is:raw>$$\max_{x\in[a,b]}|f^{(4)}(x)|\cdot\frac{(b-a)^5}{180n^4}$$</Fragment>
+                </li>
+            </ol>
+            TODO:
+            <ol>
+                <li>One-sided tail area 0.5-q(t), two-sided tail area: 1-2×q(t).</li>
+                <li>Compute <i>z</i>-score from form input data.</li>
+                <li>Create SVG shading in the part of the normal curve that is found.</li>
+                <li>Generate answer in AP Statistics format. Store above computed values in array entries, and just inject array entries into the answer.</li>
+                <li>Fun fact: The term Three sigma comes from ... is a quant firm.</li>
+            </ol>
+        </div>
     </Fragment>
 </App>
-<style>
+<script>
+    const words = [['So', 'Hence', 'Thus', 'Therefore','As a result'], ['Ba', 'Sa']];
+    
+    function normalnumerator(x){
+        return Math.exp(-0.5*x**2);
+        // More efficient to divide after Simpson's rule, but I won't do it.
+        // Plug normalnumerator(), normaldenominator() into Simpson's rule.
+    }
+    
+    // Constant function denominator, used to avoid repeated division in Simpson's rule
+    const normaldenominator = Math.sqrt(2*Math.PI);
+
+    console.log('Area: ', simpson(0,4,50,(x=>2*normalnumerator(x)), normaldenominator));
+
+    // Simpson's rule assumes n = even.
+    function simpson(a, b, n, numerator, denominator) {
+        const delta = (b-a)/n;
+        let point = 0;
+        // Simpson's rule at endpoints
+        let accum = numerator(a) + numerator(b);
+        // Simpson's rule at interior points
+        for (let i=1; i<n; i++) {
+            point += delta;
+            if (i%2 == 1) {
+                accum += 4*numerator(a+point);
+            } else if (i%2 == 0) {
+                accum += 2*numerator(a+point);
+            }
+        }
+        return accum*delta/(3*denominator);
+    }
+
+    
+</script>
+
+
+
+<style is:global>
+    #note {
+        font-size: .8rem;
+    }
     #compute {
         display: block;
         font-size: 1rem;
@@ -30,7 +115,6 @@ import App from "../../layouts/App.astro"
         background-color: rgb(255, 182, 140);
         border: 2px solid black;
         box-shadow: 5px 5px 0 0 black;
-
         &:hover {
             box-shadow: 4px 4px 0 0 black;
             transform: translate(1px, 1px);
@@ -40,59 +124,48 @@ import App from "../../layouts/App.astro"
             transform: translate(3px, 3px);
         }
     }
-    input {
-        font-size: 1.1rem;
-        border-radius: 5px;
-        border: 2px solid rgb(72, 72, 72);
-        padding: .3em .7em;
-    }
 
-    input:focus {
-        border-color: black;
+    #form {
+        width: 18rem;
     }
-    
-    input:user-invalid {
-        outline-color: red;
-    }
-
-    input:focus + label {
-        transform: translate(-15px,-10px) scale(0.9);
-    }
-
-
-    
     .input {
-    position: relative;
+        position: relative;
     }
-    
+
     .input__label {
         position: absolute;
-        color: hsl(0, 0%, 50%);
-        left: 0;
-        top: 0;
+        color: rgb(107, 107, 107);
+        left: 1rem;
+        top: 1.7rem;
+        padding: 0 .2rem;
+        height: 1.5rem;
         white-space: nowrap;
-        transform: translate(0, 0);
-        padding: 0 .2em;
-        margin-left: .4em;
-        margin-top: 1.4em;
-        transform-origin: 0 0;
         background: white;
-        transition: transform 120ms ease-in;
         font-size: .9rem;
+        transition: .4s;
+        z-index: -1;
     }
     .input__field {
         box-sizing: border-box;
+        font-family: Merriweather, serif;
+        background-color: transparent;
         display: block;
-        /* width: 100%; */
         border: 3px solid black;
-        background: transparent;
-        border-radius: var(--size-radius);
-        
+        margin: 2em 0;
+        padding-left: 1rem;
+        width: 100%;
+        height: 3rem;
     }
+    .input__field:focus {
+        outline: none;
+    }
+
     .input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
-        transform: translate(.25rem, -65%) scale(.8);
+        transform: translate(-0.4rem,-1.4rem) scale(0.95);
         color: hsl(0, 0%, 0%);
+        z-index: 1;
     }
-
-
+    /* .input__field:not(:placeholder-shown):user-valid {
+        background-color: aquamarine;
+    } */
 </style>
