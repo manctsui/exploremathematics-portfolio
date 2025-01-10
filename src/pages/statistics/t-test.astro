@@ -1,6 +1,6 @@
 ---
  // @ts-nocheck
-import App from "../../layouts/App.astro"
+ import App from "../../layouts/App.astro"
 ---
 <App
     title = "z-Test Calculator"
@@ -21,19 +21,19 @@ import App from "../../layouts/App.astro"
                 <input id="popmean" class="input__field" required placeholder="" type="text">
                 <span class="input__label">Population mean <i>μ</i></span>
             </label>
-            <label class="input" for="popstd">
-                <input id="popstd" class="input__field" placeholder="" type="text">
-                <span class="input__label">Population standard deviation <i>σ</i></span>
-            </label>
             <label class="input" for="samplemean">
                 <input id="samplemean" class="input__field" required placeholder="" type="text">
                 <span class="input__label">Sample mean $\overline x$</span>
+            </label>
+            <label class="input" for="samplestd">
+                <input id="samplestd" class="input__field" placeholder="" type="text">
+                <span class="input__label">Population standard deviation <i>σ</i></span>
             </label>
             <label class="input" for="count">
                 <input id="count" class="input__field" required placeholder="" type="number" min="1">
                 <span class="input__label">Number of samples <i>n</i></span>
             </label>
-            <button id="compute" onclick="ztest()">Compute</button>
+            <button id="compute" onclick="ttest()">Compute</button>
         </div>
         <div id="answer">
         </div>
