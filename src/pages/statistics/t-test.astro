@@ -3,15 +3,14 @@
  import App from "../../layouts/App.astro"
 ---
 <App
-    title = "z-Test Calculator"
-    ogtitle = "z-Test Calculator"
-    description = "Comprehensive z-test calculator"
-    keywords = "Statistics, z-test, calculator"
+    title = "One-Sample t-Test Calculator"
+    ogtitle = "One-Sample t-Test Calculator"
+    description = "Comprehensive One-sample t-test calculator"
+    keywords = "Statistics, One-sample t-test, calculator"
     content = ""
 >
     <Fragment slot="app">
-        <!-- <h1><i>z</i>-Test Calculator</h1> -->
-        <h1>$z$-Test Calculator</h1>
+        <h1>One-Sample $t$-Test Calculator</h1>
         <noscript>
             Enable JavaScript for this calculator to work.
         </noscript>
@@ -25,15 +24,15 @@
                 <input id="samplemean" class="input__field" required placeholder="" type="text">
                 <span class="input__label">Sample mean $\overline x$</span>
             </label>
-            <label class="input" for="samplestd">
-                <input id="samplestd" class="input__field" placeholder="" type="text">
-                <span class="input__label">Population standard deviation <i>σ</i></span>
+            <label class="input" for="std">
+                <input id="std" class="input__field" placeholder="" type="text">
+                <span class="input__label">Sample standard deviation $s_x$</span>
             </label>
             <label class="input" for="count">
                 <input id="count" class="input__field" required placeholder="" type="number" min="1">
                 <span class="input__label">Number of samples <i>n</i></span>
             </label>
-            <button id="compute" onclick="ttest()">Compute</button>
+            <button id="compute" onclick="ttestanswer()">Compute</button>
         </div>
         <div id="answer">
         </div>
@@ -44,7 +43,8 @@
 <style is:global>
     #answer {
         border: 2px solid black;
-        max-width: 18rem;
+        /* max-width: 18rem; */
+        max-width: 27rem;
         padding: 1rem;
     }
     #compute {
