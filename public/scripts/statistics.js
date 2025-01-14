@@ -1,3 +1,15 @@
+function zdo() {
+    if (event.key == "Enter") {
+        ztestanswer();
+    }
+}
+function tdo() {
+    if (event.key == "Enter") {
+        ttestanswer();
+    }
+}
+
+
 function ztestanswer() {
     // Get inputs
     const popmean = Number(document.getElementById('popmean').value);

@@ -53,7 +53,7 @@ export default defineConfig({
 				},
 			},
 			Image: true,
-			JavaScript: false,
+			JavaScript: true,
 			SVG: false,
 		}),
   ],

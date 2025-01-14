@@ -17,19 +17,19 @@
         <!-- Div needed for first input label to have correct vertical position -->
         <div id="form">
             <label class="input" for="popmean">
-                <input id="popmean" class="input__field" required placeholder="" type="text">
+                <input id="popmean" class="input__field" required placeholder="" type="text" onKeyDown="tdo(event)">
                 <span class="input__label">Population mean <i>μ</i></span>
             </label>
             <label class="input" for="samplemean">
-                <input id="samplemean" class="input__field" required placeholder="" type="text">
+                <input id="samplemean" class="input__field" required placeholder="" type="text" onKeyDown="tdo(event)">
                 <span class="input__label">Sample mean $\overline x$</span>
             </label>
             <label class="input" for="std">
-                <input id="std" class="input__field" placeholder="" type="text">
+                <input id="std" class="input__field" placeholder="" type="text" onKeyDown="tdo(event)">
                 <span class="input__label">Sample standard deviation $s_x$</span>
             </label>
             <label class="input" for="count">
-                <input id="count" class="input__field" required placeholder="" type="number" min="1">
+                <input id="count" class="input__field" required placeholder="" type="number" min="1" onKeyDown="tdo(event)">
                 <span class="input__label">Number of samples <i>n</i></span>
             </label>
             <button id="compute" onclick="ttestanswer()">Compute</button>
@@ -43,8 +43,7 @@
 <style is:global>
     #answer {
         border: 2px solid black;
-        /* max-width: 18rem; */
-        max-width: 27rem;
+        max-width: 18rem;
         padding: 1rem;
     }
     #compute {
@@ -65,7 +64,6 @@
             transform: translate(3px, 3px);
         }
     }
-
     #form {
         width: 18rem;
     }
@@ -75,16 +73,14 @@
 
     .input__label {
         position: absolute;
-        color: rgb(107, 107, 107);
-        left: 1rem;
-        top: 1.7rem;
-        padding: 0 .2rem;
-        height: 1.5rem;
+        left: 1em;
+        top: 0.7em;
+        padding: 0 .2em;
+        height: 1.5em;
         white-space: nowrap;
         background: white;
         font-size: .9rem;
         transition: .4s;
-        z-index: -1;
     }
     .input__field {
         box-sizing: border-box;
@@ -93,16 +89,16 @@
         display: block;
         border: 3px solid black;
         margin: 2em 0;
-        padding-left: 1rem;
+        padding-left: 1em;
         width: 100%;
-        height: 3rem;
+        height: 3em;
     }
     .input__field:focus {
         outline: none;
     }
 
     .input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
-        transform: translate(-0.4rem,-1.4rem) scale(0.95);
+        transform: translate(-0.4em,-1.4em) scale(0.95);
         color: hsl(0, 0%, 0%);
         z-index: 1;
     }
