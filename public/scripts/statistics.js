@@ -18,7 +18,7 @@ function ztestanswer() {
     const count = Number(document.getElementById('count').value);
     // Do computations
     const z = (samplemean - popmean)*Math.sqrt(count)/std;
-    const p = ztest(Math.abs(z), count);
+    const p = (Math.abs(z)>37.5)? ['\\(< 10^{-307}\\)', '\\(< 10^{-307}\\)'] : ztest(Math.abs(z), count);
     // Write answer
     const answer = document.getElementById('answer');
     answer.innerHTML = '<p>\\(z\\)-score: \\(' + z.toFixed(4) + 
