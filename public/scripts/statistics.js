@@ -1,16 +1,13 @@
-function zdo() {
-    if (event.key == "Enter") {
-        ztestanswer();
-    }
-}
-function tdo() {
-    if (event.key == "Enter") {
-        ttestanswer();
-    }
+function z() {
+    (event.key == "Enter") && za();
 }
 
+function t() {
+    (event.key == "Enter") && ta();
+}
 
-function ztestanswer() {
+// Generate answer to z-test
+function za() {
     // Get inputs
     const popmean = Number(document.getElementById('popmean').value);
     const std = Number(document.getElementById('std').value); 
@@ -28,7 +25,8 @@ function ztestanswer() {
     renderMathInElement(answer);
 }
 
-function ttestanswer() {
+// Generate answer to t-test
+function ta() {
     // Get inputs
     const popmean = Number(document.getElementById('popmean').value);
     const std = Number(document.getElementById('std').value); 
@@ -65,6 +63,7 @@ function ttest(t, n) {
         c = c*(i/(i-1));
     }
     p = c*simpson(0, Math.atan2(Math.sqrt(n-1), t), 500, x => Math.sin(x)**(n-2));
+    console.log(Math.atan2(Math.sqrt(n-1), t));
     return [tr(p/2), tr(p)];
 }
 
